@@ -1,0 +1,3331 @@
+<html><head>
+    <base href="">
+    <meta charset="utf-8">
+    <title>Credit Analysis - Admin Panel</title>
+    <meta name="description" content="Metronic admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets.">
+    <meta name="keywords" content="Metronic, bootstrap, bootstrap 5, Angular 11, VueJs, React, Laravel, admin themes, web design, figma, web development, ree admin themes, bootstrap admin, bootstrap dashboard">
+    <link rel="canonical" href="Https://preview.keenthemes.com/metronic8">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--begin::Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet">
+    <!--end::Fonts-->
+
+    <!--begin::Global Stylesheets Bundle(used by all pages)-->
+    <link href="https://salescrm.ummeedhfc.com/new-design-assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css">
+    <link href="https://salescrm.ummeedhfc.com/new-design-assets/css/style.bundle.css" rel="stylesheet" type="text/css">
+    <link href="https://salescrm.ummeedhfc.com/new-design-assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css">
+    <!--end::Global Stylesheets Bundle-->
+    <link href="https://salescrm.ummeedhfc.com/assets/css/sm.css" rel="stylesheet" type="text/css">
+    <meta name="csrf_token" value="Gc4H49OWriAWG1x8kXVSqNts7FymW2nvxHYui0Vn">
+    <!--begin::Timepicker-->
+    <link rel="stylesheet" href="https://salescrm.ummeedhfc.com/new-design-assets/css/bootstrap-datetimepicker.min.css" media="screen">
+    <link rel="stylesheet" href="https://salescrm.ummeedhfc.com/new-design-assets/js/timepicker/jquery.timepicker.css">
+    <!--end::Timepicker-->
+    <link href="https://salescrm.ummeedhfc.com/new-design-assets/css/custom.css" rel="stylesheet" type="text/css">
+    <link href="https://salescrm.ummeedhfc.com/new-design-assets/css/query-tab.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <style>
+        .parsley-errors-list {
+            color: #e77474;
+        }
+
+        .hide_menu
+        {
+            display: none !important;
+        }
+
+        .disabled_menu
+        {
+            /*pointer-events: none;*/
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+        -moz-appearance: textfield;
+        }
+
+        .no-border {
+            border: none !important;
+            box-shadow: none !important;
+            background-color: transparent !important;
+        }
+
+        .no-arrow {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: none !important;
+            padding-right: 0 !important;
+            padding-left: 0 !important;
+        }
+
+
+
+    </style>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <style>
+        .map_div { width: 75%; height: 400px; }
+    </style>
+    <style>
+    /*.table-small table tr th {*/
+    /*    padding: 0.75rem 0.75rem !important;*/
+    /*}*/
+    /*.table-small table tr td {*/
+    /*    padding: 0.75rem 0.75rem !important;*/
+    /*}*/
+    .table td:first-child, .table th:first-child, .table tr:first-child {
+        padding-left: 1.25rem;
+    }
+    .card-bg{
+        background-color: #fff!important;
+    }
+    /*.btn-active-color-primary{*/
+    /*    margin:5px;*/
+    /*}*/
+
+    .disabledbutton {
+        pointer-events: none;
+        opacity: 0.7;
+    }
+</style>
+    <!-- Livewire Styles -->
+<style>
+    [wire\:loading], [wire\:loading\.delay], [wire\:loading\.inline-block], [wire\:loading\.inline], [wire\:loading\.block], [wire\:loading\.flex], [wire\:loading\.table], [wire\:loading\.grid], [wire\:loading\.inline-flex] {
+        display: none;
+    }
+
+    [wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short], [wire\:loading\.delay\.long], [wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest] {
+        display:none;
+    }
+
+    [wire\:offline] {
+        display: none;
+    }
+
+    [wire\:dirty]:not(textarea):not(input):not(select) {
+        display: none;
+    }
+
+    input:-webkit-autofill, select:-webkit-autofill, textarea:-webkit-autofill {
+        animation-duration: 50000s;
+        animation-name: livewireautofill;
+    }
+
+    @keyframes livewireautofill { from {} }
+</style>
+<style type="text/css">.apexcharts-canvas {
+  position: relative;
+  user-select: none;
+  /* cannot give overflow: hidden as it will crop tooltips which overflow outside chart area */
+}
+
+
+/* scrollbar is not visible by default for legend, hence forcing the visibility */
+.apexcharts-canvas ::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 6px;
+}
+
+.apexcharts-canvas ::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .5);
+  box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+
+.apexcharts-inner {
+  position: relative;
+}
+
+.apexcharts-text tspan {
+  font-family: inherit;
+}
+
+.legend-mouseover-inactive {
+  transition: 0.15s ease all;
+  opacity: 0.20;
+}
+
+.apexcharts-series-collapsed {
+  opacity: 0;
+}
+
+.apexcharts-tooltip {
+  border-radius: 5px;
+  box-shadow: 2px 2px 6px -4px #999;
+  cursor: default;
+  font-size: 14px;
+  left: 62px;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  white-space: nowrap;
+  z-index: 12;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-tooltip.apexcharts-active {
+  opacity: 1;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-tooltip.apexcharts-theme-light {
+  border: 1px solid #e3e3e3;
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.apexcharts-tooltip.apexcharts-theme-dark {
+  color: #fff;
+  background: rgba(30, 30, 30, 0.8);
+}
+
+.apexcharts-tooltip * {
+  font-family: inherit;
+}
+
+
+.apexcharts-tooltip-title {
+  padding: 6px;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-title {
+  background: #ECEFF1;
+  border-bottom: 1px solid #ddd;
+}
+
+.apexcharts-tooltip.apexcharts-theme-dark .apexcharts-tooltip-title {
+  background: rgba(0, 0, 0, 0.7);
+  border-bottom: 1px solid #333;
+}
+
+.apexcharts-tooltip-text-value,
+.apexcharts-tooltip-text-z-value {
+  display: inline-block;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.apexcharts-tooltip-text-z-label:empty,
+.apexcharts-tooltip-text-z-value:empty {
+  display: none;
+}
+
+.apexcharts-tooltip-text-value,
+.apexcharts-tooltip-text-z-value {
+  font-weight: 600;
+}
+
+.apexcharts-tooltip-marker {
+  width: 12px;
+  height: 12px;
+  position: relative;
+  top: 0px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.apexcharts-tooltip-series-group {
+  padding: 0 10px;
+  display: none;
+  text-align: left;
+  justify-content: left;
+  align-items: center;
+}
+
+.apexcharts-tooltip-series-group.apexcharts-active .apexcharts-tooltip-marker {
+  opacity: 1;
+}
+
+.apexcharts-tooltip-series-group.apexcharts-active,
+.apexcharts-tooltip-series-group:last-child {
+  padding-bottom: 4px;
+}
+
+.apexcharts-tooltip-series-group-hidden {
+  opacity: 0;
+  height: 0;
+  line-height: 0;
+  padding: 0 !important;
+}
+
+.apexcharts-tooltip-y-group {
+  padding: 6px 0 5px;
+}
+
+.apexcharts-tooltip-candlestick {
+  padding: 4px 8px;
+}
+
+.apexcharts-tooltip-candlestick>div {
+  margin: 4px 0;
+}
+
+.apexcharts-tooltip-candlestick span.value {
+  font-weight: bold;
+}
+
+.apexcharts-tooltip-rangebar {
+  padding: 5px 8px;
+}
+
+.apexcharts-tooltip-rangebar .category {
+  font-weight: 600;
+  color: #777;
+}
+
+.apexcharts-tooltip-rangebar .series-name {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.apexcharts-xaxistooltip {
+  opacity: 0;
+  padding: 9px 10px;
+  pointer-events: none;
+  color: #373d3f;
+  font-size: 13px;
+  text-align: center;
+  border-radius: 2px;
+  position: absolute;
+  z-index: 10;
+  background: #ECEFF1;
+  border: 1px solid #90A4AE;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-xaxistooltip.apexcharts-theme-dark {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+.apexcharts-xaxistooltip:after,
+.apexcharts-xaxistooltip:before {
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.apexcharts-xaxistooltip:after {
+  border-color: rgba(236, 239, 241, 0);
+  border-width: 6px;
+  margin-left: -6px;
+}
+
+.apexcharts-xaxistooltip:before {
+  border-color: rgba(144, 164, 174, 0);
+  border-width: 7px;
+  margin-left: -7px;
+}
+
+.apexcharts-xaxistooltip-bottom:after,
+.apexcharts-xaxistooltip-bottom:before {
+  bottom: 100%;
+}
+
+.apexcharts-xaxistooltip-top:after,
+.apexcharts-xaxistooltip-top:before {
+  top: 100%;
+}
+
+.apexcharts-xaxistooltip-bottom:after {
+  border-bottom-color: #ECEFF1;
+}
+
+.apexcharts-xaxistooltip-bottom:before {
+  border-bottom-color: #90A4AE;
+}
+
+.apexcharts-xaxistooltip-bottom.apexcharts-theme-dark:after {
+  border-bottom-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-xaxistooltip-bottom.apexcharts-theme-dark:before {
+  border-bottom-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-xaxistooltip-top:after {
+  border-top-color: #ECEFF1
+}
+
+.apexcharts-xaxistooltip-top:before {
+  border-top-color: #90A4AE;
+}
+
+.apexcharts-xaxistooltip-top.apexcharts-theme-dark:after {
+  border-top-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-xaxistooltip-top.apexcharts-theme-dark:before {
+  border-top-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-xaxistooltip.apexcharts-active {
+  opacity: 1;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-yaxistooltip {
+  opacity: 0;
+  padding: 4px 10px;
+  pointer-events: none;
+  color: #373d3f;
+  font-size: 13px;
+  text-align: center;
+  border-radius: 2px;
+  position: absolute;
+  z-index: 10;
+  background: #ECEFF1;
+  border: 1px solid #90A4AE;
+}
+
+.apexcharts-yaxistooltip.apexcharts-theme-dark {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+.apexcharts-yaxistooltip:after,
+.apexcharts-yaxistooltip:before {
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.apexcharts-yaxistooltip:after {
+  border-color: rgba(236, 239, 241, 0);
+  border-width: 6px;
+  margin-top: -6px;
+}
+
+.apexcharts-yaxistooltip:before {
+  border-color: rgba(144, 164, 174, 0);
+  border-width: 7px;
+  margin-top: -7px;
+}
+
+.apexcharts-yaxistooltip-left:after,
+.apexcharts-yaxistooltip-left:before {
+  left: 100%;
+}
+
+.apexcharts-yaxistooltip-right:after,
+.apexcharts-yaxistooltip-right:before {
+  right: 100%;
+}
+
+.apexcharts-yaxistooltip-left:after {
+  border-left-color: #ECEFF1;
+}
+
+.apexcharts-yaxistooltip-left:before {
+  border-left-color: #90A4AE;
+}
+
+.apexcharts-yaxistooltip-left.apexcharts-theme-dark:after {
+  border-left-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-yaxistooltip-left.apexcharts-theme-dark:before {
+  border-left-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-yaxistooltip-right:after {
+  border-right-color: #ECEFF1;
+}
+
+.apexcharts-yaxistooltip-right:before {
+  border-right-color: #90A4AE;
+}
+
+.apexcharts-yaxistooltip-right.apexcharts-theme-dark:after {
+  border-right-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-yaxistooltip-right.apexcharts-theme-dark:before {
+  border-right-color: rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-yaxistooltip.apexcharts-active {
+  opacity: 1;
+}
+
+.apexcharts-yaxistooltip-hidden {
+  display: none;
+}
+
+.apexcharts-xcrosshairs,
+.apexcharts-ycrosshairs {
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-xcrosshairs.apexcharts-active,
+.apexcharts-ycrosshairs.apexcharts-active {
+  opacity: 1;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-ycrosshairs-hidden {
+  opacity: 0;
+}
+
+.apexcharts-selection-rect {
+  cursor: move;
+}
+
+.svg_select_boundingRect, .svg_select_points_rot {
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+.apexcharts-selection-rect + g .svg_select_boundingRect,
+.apexcharts-selection-rect + g .svg_select_points_rot {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.apexcharts-selection-rect + g .svg_select_points_l,
+.apexcharts-selection-rect + g .svg_select_points_r {
+  cursor: ew-resize;
+  opacity: 1;
+  visibility: visible;
+}
+
+.svg_select_points {
+  fill: #efefef;
+  stroke: #333;
+  rx: 2;
+}
+
+.apexcharts-svg.apexcharts-zoomable.hovering-zoom {
+  cursor: crosshair
+}
+
+.apexcharts-svg.apexcharts-zoomable.hovering-pan {
+  cursor: move
+}
+
+.apexcharts-zoom-icon,
+.apexcharts-zoomin-icon,
+.apexcharts-zoomout-icon,
+.apexcharts-reset-icon,
+.apexcharts-pan-icon,
+.apexcharts-selection-icon,
+.apexcharts-menu-icon,
+.apexcharts-toolbar-custom-icon {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  line-height: 24px;
+  color: #6E8192;
+  text-align: center;
+}
+
+.apexcharts-zoom-icon svg,
+.apexcharts-zoomin-icon svg,
+.apexcharts-zoomout-icon svg,
+.apexcharts-reset-icon svg,
+.apexcharts-menu-icon svg {
+  fill: #6E8192;
+}
+
+.apexcharts-selection-icon svg {
+  fill: #444;
+  transform: scale(0.76)
+}
+
+.apexcharts-theme-dark .apexcharts-zoom-icon svg,
+.apexcharts-theme-dark .apexcharts-zoomin-icon svg,
+.apexcharts-theme-dark .apexcharts-zoomout-icon svg,
+.apexcharts-theme-dark .apexcharts-reset-icon svg,
+.apexcharts-theme-dark .apexcharts-pan-icon svg,
+.apexcharts-theme-dark .apexcharts-selection-icon svg,
+.apexcharts-theme-dark .apexcharts-menu-icon svg,
+.apexcharts-theme-dark .apexcharts-toolbar-custom-icon svg {
+  fill: #f3f4f5;
+}
+
+.apexcharts-canvas .apexcharts-zoom-icon.apexcharts-selected svg,
+.apexcharts-canvas .apexcharts-selection-icon.apexcharts-selected svg,
+.apexcharts-canvas .apexcharts-reset-zoom-icon.apexcharts-selected svg {
+  fill: #008FFB;
+}
+
+.apexcharts-theme-light .apexcharts-selection-icon:not(.apexcharts-selected):hover svg,
+.apexcharts-theme-light .apexcharts-zoom-icon:not(.apexcharts-selected):hover svg,
+.apexcharts-theme-light .apexcharts-zoomin-icon:hover svg,
+.apexcharts-theme-light .apexcharts-zoomout-icon:hover svg,
+.apexcharts-theme-light .apexcharts-reset-icon:hover svg,
+.apexcharts-theme-light .apexcharts-menu-icon:hover svg {
+  fill: #333;
+}
+
+.apexcharts-selection-icon,
+.apexcharts-menu-icon {
+  position: relative;
+}
+
+.apexcharts-reset-icon {
+  margin-left: 5px;
+}
+
+.apexcharts-zoom-icon,
+.apexcharts-reset-icon,
+.apexcharts-menu-icon {
+  transform: scale(0.85);
+}
+
+.apexcharts-zoomin-icon,
+.apexcharts-zoomout-icon {
+  transform: scale(0.7)
+}
+
+.apexcharts-zoomout-icon {
+  margin-right: 3px;
+}
+
+.apexcharts-pan-icon {
+  transform: scale(0.62);
+  position: relative;
+  left: 1px;
+  top: 0px;
+}
+
+.apexcharts-pan-icon svg {
+  fill: #fff;
+  stroke: #6E8192;
+  stroke-width: 2;
+}
+
+.apexcharts-pan-icon.apexcharts-selected svg {
+  stroke: #008FFB;
+}
+
+.apexcharts-pan-icon:not(.apexcharts-selected):hover svg {
+  stroke: #333;
+}
+
+.apexcharts-toolbar {
+  position: absolute;
+  z-index: 11;
+  max-width: 176px;
+  text-align: right;
+  border-radius: 3px;
+  padding: 0px 6px 2px 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.apexcharts-menu {
+  background: #fff;
+  position: absolute;
+  top: 100%;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 3px;
+  right: 10px;
+  opacity: 0;
+  min-width: 110px;
+  transition: 0.15s ease all;
+  pointer-events: none;
+}
+
+.apexcharts-menu.apexcharts-menu-open {
+  opacity: 1;
+  pointer-events: all;
+  transition: 0.15s ease all;
+}
+
+.apexcharts-menu-item {
+  padding: 6px 7px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.apexcharts-theme-light .apexcharts-menu-item:hover {
+  background: #eee;
+}
+
+.apexcharts-theme-dark .apexcharts-menu {
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .apexcharts-canvas:hover .apexcharts-toolbar {
+    opacity: 1;
+  }
+}
+
+.apexcharts-datalabel.apexcharts-element-hidden {
+  opacity: 0;
+}
+
+.apexcharts-pie-label,
+.apexcharts-datalabels,
+.apexcharts-datalabel,
+.apexcharts-datalabel-label,
+.apexcharts-datalabel-value {
+  cursor: default;
+  pointer-events: none;
+}
+
+.apexcharts-pie-label-delay {
+  opacity: 0;
+  animation-name: opaque;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+}
+
+.apexcharts-canvas .apexcharts-element-hidden {
+  opacity: 0;
+}
+
+.apexcharts-hide .apexcharts-series-points {
+  opacity: 0;
+}
+
+.apexcharts-gridline,
+.apexcharts-annotation-rect,
+.apexcharts-tooltip .apexcharts-marker,
+.apexcharts-area-series .apexcharts-area,
+.apexcharts-line,
+.apexcharts-zoom-rect,
+.apexcharts-toolbar svg,
+.apexcharts-area-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events,
+.apexcharts-line-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events,
+.apexcharts-radar-series path,
+.apexcharts-radar-series polygon {
+  pointer-events: none;
+}
+
+
+/* markers */
+
+.apexcharts-marker {
+  transition: 0.15s ease all;
+}
+
+@keyframes opaque {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+/* Resize generated styles */
+
+@keyframes resizeanim {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.resize-triggers {
+  animation: 1ms resizeanim;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.resize-triggers,
+.resize-triggers>div,
+.contract-trigger:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.resize-triggers>div {
+  background: #eee;
+  overflow: auto;
+}
+
+.contract-trigger:before {
+  width: 200%;
+  height: 200%;
+}</style></head>
+        
+            
+            <body id="kt_body" data-kt-aside-minimize="on" class="header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed responsive-header" style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px; ">
+
+                                    <!--begin::Chat drawer-->
+                    <div id="kt_drawer_chat" class="bg-white drawer drawer-end" data-kt-drawer="true" data-kt-drawer-name="chat" data-kt-drawer-activate="true" data-kt-drawer-overlay="true" data-kt-drawer-width="{default:'320px', 'md': '375px'}" data-kt-drawer-direction="end" data-kt-drawer-toggle="#kt_drawer_chat_toggle" data-kt-drawer-close="#kt_drawer_chat_close" style="width: 375px !important;">
+                        <!--begin::Messenger-->
+                        <div class="card w-100 rounded-0 shadow-none" id="kt_drawer_chat_messenger">
+                            <!--begin::Header-->
+                            <div class="card-header" id="kt_explore_header">
+                                <h3 class="card-title fw-bolder text-gray-700">TAT <span class="badge bg-danger ms-2">
+                                                                                35 Days
+                                    </span>
+                                </h3>
+                                <div class="">
+                                    <button type="button" class="btn btn-sm btn-icon btn-active-light-primary me-n5" id="kt_drawer_chat_close">
+                                        <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
+                                        <span class="svg-icon svg-icon-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)" fill="#000000">
+                                                    <rect fill="#000000" x="0" y="7" width="16" height="2" rx="1"></rect>
+                                                    <rect fill="#000000" opacity="0.5" transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)" x="0" y="7" width="16" height="2" rx="1"></rect>
+                                                </g>
+                                            </svg>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!--end::Header-->
+                            <!--begin::Card body-->
+                            <div class="card-body p-5" id="kt_drawer_chat_messenger_body">
+                                <!--begin::Timeline-->
+                                <div class="timeline">
+                                    <!--begin::Timeline item-->
+                                    <div class="timeline-item completed">
+                                        <!--begin::Timeline line-->
+                                        <div class="timeline-line w-40px"></div>
+                                        <!--end::Timeline line-->
+                                        <!--begin::Timeline icon-->
+                                        <div class="timeline-icon symbol symbol-circle symbol-40px me-1">
+                                            <div class="symbol-label bg-light">
+                                                <!--begin::Svg Icon | path: icons/duotone/Communication/Chat2.svg-->
+                                                <span class="svg-icon svg-icon-2 svg-icon-gray-500">
+                                                    <img src="https://salescrm.ummeedhfc.com/new-design-assets/tat-icons/lead-icon.svg" alt="">
+                                                </span>
+                                                <!--end::Svg Icon-->
+                                            </div>
+                                            <div class="">
+                                                <span class="badge badge-light fw-bolder my-3">
+
+                                                    2 Days
+
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <!--end::Timeline icon-->
+                                        <!--begin::Timeline content-->
+                                        <div class="timeline-content mb-6 mt-n1">
+                                            <!--begin::Timeline heading-->
+                                            <div class="pe-3 mb-5 lh-1">
+                                                <div class="me-2 fs-8"><span class="me-2 fw-bold">22-Sep-2025</span>
+                                                    <span class="text-muted"><i class="far fa-clock fs-8"></i>
+                                                        01:38 PM</span><span class="badge badge-light-success ms-2"></span>
+                                                </div>
+                                                <div class="fs-4 fw-bolder mb-2">Lead</div>
+                                            </div>
+                                            <!--end::Timeline heading-->
+                                            <!--begin::Timeline details-->
+
+                                            <!--end::Timeline details-->
+                                        </div>
+                                        <!--end::Timeline content-->
+                                    </div>
+                                    <!--end::Timeline item-->
+                                    <!--begin::Timeline item-->
+                                    <div class="timeline-item completed">
+                                        <!--begin::Timeline line-->
+                                        <div class="timeline-line w-40px"></div>
+                                        <!--end::Timeline line-->
+                                        <!--begin::Timeline icon-->
+                                        <div class="timeline-icon symbol symbol-circle symbol-40px me-1">
+                                            <div class="symbol-label bg-light">
+                                                <!--begin::Svg Icon | path: icons/duotone/Communication/Chat2.svg-->
+                                                <span class="svg-icon svg-icon-2 svg-icon-gray-500">
+                                                    <img src="https://salescrm.ummeedhfc.com/new-design-assets/tat-icons/login-icon.svg" alt="">
+                                                </span>
+                                                <!--end::Svg Icon-->
+                                            </div>
+                                            <div class="">
+                                                <span class="badge badge-light fw-bolder my-3">
+                                                    1 Day
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <!--end::Timeline icon-->
+                                        <!--begin::Timeline content-->
+                                        <div class="timeline-content mb-6 mt-n1">
+                                            <!--begin::Timeline heading-->
+                                            <div class="pe-3 mb-5 lh-1">
+                                                <div class="me-2 fs-8"><span class="me-2 fw-bold">24-Sep-2025</span>
+                                                    <span class="text-muted"><i class="far fa-clock fs-8"></i>
+                                                        10:29 PM</span><span class="badge badge-light-success ms-2"></span>
+                                                </div>
+                                                <div class="fs-4 fw-bolder mb-2">Login Submitted</div>
+                                            </div>
+                                            <!--end::Timeline heading-->
+                                            <!--begin::Timeline details-->
+
+                                            <!--end::Timeline details-->
+                                        </div>
+                                        <!--end::Timeline content-->
+                                    </div>
+                                    <!--end::Timeline item-->
+                                    <!--begin::Timeline item-->
+                                    <div class="timeline-item completed">
+                                        <!--begin::Timeline line-->
+                                        <div class="timeline-line w-40px"></div>
+                                        <!--end::Timeline line-->
+                                        <!--begin::Timeline icon-->
+                                        <div class="timeline-icon symbol symbol-circle symbol-40px me-1">
+                                            <div class="symbol-label bg-light">
+                                                <!--begin::Svg Icon | path: icons/duotone/Communication/Chat2.svg-->
+                                                <span class="svg-icon svg-icon-2 svg-icon-gray-500">
+                                                    <img src="https://salescrm.ummeedhfc.com/new-design-assets/tat-icons/login-approved-icon.svg" alt="">
+                                                </span>
+                                                <!--end::Svg Icon-->
+                                            </div>
+                                            <div class="">
+                                                                                                    <span class="badge badge-light fw-bolder my-3">
+                                                        11 Days
+                                                    </span>
+                                                                                            </div>
+                                        </div>
+                                        <!--end::Timeline icon-->
+                                        <!--begin::Timeline content-->
+                                        <div class="timeline-content mb-6 mt-n1">
+                                            <!--begin::Timeline heading-->
+                                            <div class="pe-3 mb-5 lh-1">
+                                                <div class="me-2 fs-8">
+                                                    <span class="me-2 fw-bold">
+                                                                                                                    25-Sep-2025
+                                                                                                            </span>
+                                                    <span class="text-muted">
+                                                                                                                    <i class="far fa-clock fs-8"></i>04:13 PM
+                                                                                                            </span>
+                                                    <span class="badge badge-light-success ms-2"></span>
+                                                </div>
+                                                <div class="fs-4 fw-bolder mb-2">Login Approved</div>
+                                            </div>
+                                            <!--end::Timeline heading-->
+                                            <!--begin::Timeline details-->
+
+                                            <!--end::Timeline details-->
+                                        </div>
+                                        <!--end::Timeline content-->
+                                    </div>
+                                    <!--end::Timeline item-->
+                                    <div class="timeline-item completed">
+                                        <!--begin::Timeline line-->
+                                        <div class="timeline-line w-40px"></div>
+                                        <!--end::Timeline line-->
+                                        <!--begin::Timeline icon-->
+                                        <div class="timeline-icon symbol symbol-circle symbol-40px me-1">
+                                            <div class="symbol-label bg-light">
+                                                <!--begin::Svg Icon | path: icons/duotone/Communication/Chat2.svg-->
+                                                <span class="svg-icon svg-icon-2 svg-icon-gray-500">
+                                                    <img src="https://salescrm.ummeedhfc.com/new-design-assets/tat-icons/recommendation-icon.svg" alt="">
+                                                </span>
+                                                <!--end::Svg Icon-->
+                                            </div>
+                                            <div class="">
+                                                                                            </div>
+                                        </div>
+                                        <!--end::Timeline icon-->
+                                        <!--begin::Timeline content-->
+                                        <div class="timeline-content mb-6 mt-n1">
+                                            <!--begin::Timeline heading-->
+                                            <div class="pe-3 mb-5 lh-1">
+                                                <div class="me-2 fs-8">
+                                                    <span class="me-2 fw-bold">
+                                                                                                                    06-Oct-2025
+                                                                                                            </span>
+                                                    <span class="text-muted">
+                                                                                                                    <i class="far fa-clock fs-8"></i>01:08 PM
+                                                                                                            </span>
+                                                    <span class="badge badge-light-success ms-2"></span>
+                                                </div>
+                                                <div class="fs-4 fw-bolder mb-2">Financial Approval</div>
+                                            </div>
+                                            <!--end::Timeline heading-->
+                                            <!--begin::Timeline details-->
+
+                                            <!--end::Timeline details-->
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item completed">
+                                        <!--begin::Timeline line-->
+                                        <div class="timeline-line w-40px"></div>
+                                        <!--end::Timeline line-->
+                                        <!--begin::Timeline icon-->
+                                        <div class="timeline-icon symbol symbol-circle symbol-40px me-1">
+                                            <div class="symbol-label bg-light">
+                                                <!--begin::Svg Icon | path: icons/duotone/Communication/Chat2.svg-->
+                                                <span class="svg-icon svg-icon-2 svg-icon-gray-500">
+                                                    <img src="https://salescrm.ummeedhfc.com/new-design-assets/tat-icons/recommendation-icon.svg" alt="">
+                                                </span>
+                                                <!--end::Svg Icon-->
+                                            </div>
+                                            <div class="">
+                                                                                            </div>
+                                        </div>
+                                        <!--end::Timeline icon-->
+                                        <!--begin::Timeline content-->
+                                        <div class="timeline-content mb-6 mt-n1">
+                                            <!--begin::Timeline heading-->
+                                            <div class="pe-3 mb-5 lh-1">
+                                                <div class="me-2 fs-8">
+                                                    <span class="me-2 fw-bold">
+                                                                                                                    Pending
+                                                                                                            </span>
+                                                    <span class="text-muted">
+                                                                                                            </span>
+                                                    <span class="badge badge-light-success ms-2"></span>
+                                                </div>
+                                                <div class="fs-4 fw-bolder mb-2">Final Approval</div>
+                                            </div>
+                                            <!--end::Timeline heading-->
+                                            <!--begin::Timeline details-->
+
+                                            <!--end::Timeline details-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end::Timeline content-->
+                            </div>
+                        </div>
+                        <!--end::Timeline-->
+                    </div>
+                    <!--end::Chat drawer-->
+                
+                <!--begin::Main-->
+                <!--begin::Root-->
+                <div class="d-flex flex-column flex-root">
+                    <!--begin::Page-->
+                    <div class="page flex-row">
+
+                                                <div class="d-flex flex-column flex-root">
+                            <!--begin::Page-->
+                            <div class="page d-flex flex-row header-fixed-nk">
+                            <!--begin::Wrapper-->
+                                <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+                                    <div wire:id="RHQT3QIAKeHP1tQjHAUC">
+            <div class="row mb-2 back-button">
+            <a class="btn btn-sm btn-primary float-end w-75px me-2 add-notes-btn btn-margin" href="https://salescrm.ummeedhfc.com/full-deal-list">Back</a>
+        </div>
+        <div id="kt_header" class="header align-items-stretch">
+        <!--begin::Container-->
+        <div class="container-fluid d-flex align-items-stretch justify-content-between">
+            <!--begin::Aside mobile toggle-->
+            <!--end::Aside mobile toggle-->
+                        <!--begin::Logo-->
+            <div class="logo-m d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-lg-15">
+
+                                <a href="https://salescrm.ummeedhfc.com/full-deal-list">
+                                    <img alt="Logo" src="https://salescrm.ummeedhfc.com/assets/media/logos/umeed-credit-logo.png" class="h-55px h-lg-55px">
+                                </a>
+                            </div>
+            <!--end::Logo-->
+                        <!--begin::Wrapper-->
+            <div class="remove-flex-res d-flex align-items-stretch justify-content-between flex-lg-grow-1">
+                <!--begin::Navbar-->
+                <div class="align-items-center position-relative mt-2" id="kt_header_nav">
+                    <!--begin::Item-->
+                    <div class="user-details d-flex align-items-center p-2 pe-2 h-50px show-desktop-sm">
+                        <!--begin::Symbol-->
+                        <div class="d-flex">
+                            <div class="flex-grow-1 ms-2 me-5 d-none remove-flex-sm margin-10">
+                                <span class="user-label text-muted d-block fs-9">System ID</span>
+                                <div class="user-value fw-bolder text-gray-800 fs-7">30263765</div>
+                            </div>
+                            <div class="flex-grow-1 ms-2 me-5 remove-flex-sm margin-10">
+                                <span class="user-label text-muted d-block fs-9">Lead Number</span>
+                                <div class="user-value fw-bolder text-gray-800 fs-7">00147438</div>
+                            </div>
+                            <div class="flex-grow-1 ms-2 me-5 d-none remove-flex-sm margin-10">
+                                <span class="user-label text-muted d-block fs-9">Lead created RM Name</span>
+                                <div class="user-value fw-bolder text-gray-800 fs-7">Deshraj  Saini</div>
+                            </div>
+                            <div class="flex-grow-1 ms-2 me-5 remove-flex-sm margin-10">
+                                <span class="user-label text-muted d-block fs-9">Branch</span>
+                                <div class="user-value fw-bolder text-gray-800 fs-7">CHOMU</div>
+                            </div>
+                            <div class="flex-grow-1 ms-2 me-5 remove-flex-sm margin-10">
+                                <span class="user-label text-muted d-block fs-9">Product</span>
+                                <div class="user-value fw-bolder text-gray-800 fs-7">HL</div>
+                            </div>
+                            <div class="float-start me-5 margin-10">
+                                <span class="user-label text-muted d-block fs-9">Loan Amount</span>
+                                <div class="user-value fw-bolder text-gray-800 fs-7">700000</div>
+                            </div>
+                            <div class="float-start me-5 margin-10">
+                                <span class="user-label text-muted d-block fs-9">Final Rate</span>
+                                <div class="user-value fw-bolder text-gray-800 fs-7">14%</div>
+                            </div>
+                        </div>
+                        <div id="extra_content" class="extra_content">
+                            <div class="d-flex">
+                                <div class="float-start me-5 margin-10">
+                                    <span class="user-label text-muted d-block fs-9">Tenure</span>
+                                    <div class="user-value fw-bolder text-gray-800 fs-7">144 Months</div>
+                                </div>
+                                <div class="float-start me-5 margin-10">
+                                    <span class="user-label text-muted d-block fs-9">Transaction Type/End Use</span>
+                                    <div class="user-value fw-bolder text-gray-800 fs-7">HOME CONSTRUCTION</div>
+                                </div>
+                                <div class="float-start me-5 margin-10">
+                                    <span class="user-label text-muted d-block fs-9">Scheme</span>
+                                    <div class="user-value fw-bolder text-gray-800 fs-7">NON BALANCE TRANSFER</div>
+                                </div>
+                                <div class="float-start me-5 margin-10">
+                                    <span class="user-label text-muted d-block fs-9">Booked Date Time</span>
+                                    <div class="user-value fw-bolder text-gray-800 fs-7">-</div>
+                                </div>
+                            </div>
+                        </div>
+                        <span id="read_more" class="read_more">Show <br>More</span>
+                        <!--end::Title-->
+                        <!--begin::Icon-->
+                        <!--end::Lable-->
+                    </div>
+                    <!--end::Item-->
+                    <div class="extra-user-details w-100" style="display: none;">
+                    </div>
+                </div>
+                <!--end::Navbar-->
+
+                <!--begin::Toolbar wrapper-->
+                <div class="d-flex align-items-center flex-shrink-0">
+                                            <div class="main-box d-flex align-items-center ps-2 pe-2 float-end" style="z-index: -1;">
+                            <div class="fs-8 fst-italic lh-1 text-end">Total<br>Borrowers:</div>
+                            <div class="monthly-income fs-1 ps-2" style="font-size: 2.2rem !important;">
+                                3
+                            </div>
+                        </div>
+                                        <!--begin::User menu-->
+                    <div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
+                        <div id="kt_drawer_chat_toggle" class="desktop-toggle-btn me-4 h-50px float-end cursor-pointer" title="" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-trigger="hover" data-bs-original-title="Watch TAT">
+                            <!--begin::Item-->
+                            <div class="d-flex align-items-center bg-light-warning rounded p-2 pe-8 form-select form-select-solid tat-btn rounded-5">
+                                <!--begin::Icon-->
+                                <span class="svg-icon svg-icon-muted svg-icon-2hx me-3"><svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <path d="M10.9630156,7.5 L11.0475062,7.5 C11.3043819,7.5 11.5194647,7.69464724 11.5450248,7.95024814 L12,12.5 L15.2480695,14.3560397 C15.403857,14.4450611 15.5,14.6107328 15.5,14.7901613 L15.5,15 C15.5,15.2109164 15.3290185,15.3818979 15.1181021,15.3818979 C15.0841582,15.3818979 15.0503659,15.3773725 15.0176181,15.3684413 L10.3986612,14.1087258 C10.1672824,14.0456225 10.0132986,13.8271186 10.0316926,13.5879956 L10.4644883,7.96165175 C10.4845267,7.70115317 10.7017474,7.5 10.9630156,7.5 Z" fill="#000000"></path>
+                                        <path d="M7.38979581,2.8349582 C8.65216735,2.29743306 10.0413491,2 11.5,2 C17.2989899,2 22,6.70101013 22,12.5 C22,18.2989899 17.2989899,23 11.5,23 C5.70101013,23 1,18.2989899 1,12.5 C1,11.5151324 1.13559454,10.5619345 1.38913364,9.65805651 L3.31481075,10.1982117 C3.10672013,10.940064 3,11.7119264 3,12.5 C3,17.1944204 6.80557963,21 11.5,21 C16.1944204,21 20,17.1944204 20,12.5 C20,7.80557963 16.1944204,4 11.5,4 C10.54876,4 9.62236069,4.15592757 8.74872191,4.45446326 L9.93948308,5.87355717 C10.0088058,5.95617272 10.0495583,6.05898805 10.05566,6.16666224 C10.0712834,6.4423623 9.86044965,6.67852665 9.5847496,6.69415008 L4.71777931,6.96995273 C4.66931162,6.97269931 4.62070229,6.96837279 4.57348157,6.95710938 C4.30487471,6.89303938 4.13906482,6.62335149 4.20313482,6.35474463 L5.33163823,1.62361064 C5.35654118,1.51920756 5.41437908,1.4255891 5.49660017,1.35659741 C5.7081375,1.17909652 6.0235153,1.2066885 6.2010162,1.41822583 L7.38979581,2.8349582 Z" fill="#000000" opacity="0.3"></path>
+                                    </svg>
+                                </span>
+                                <!--end::Icon-->
+                                <!--begin::Title-->
+                                <div class="flex-grow-1 me-2">
+                                    <a href="#" class="fw-bolder text-gray-800 text-hover-primary fs-7 d-block">TAT Details</a>
+                                    <span class="text-muted fs-9"></span> <span class="badge badge-danger pt-1 pb-1 ms-2">
+                                                                                                                                35 Days
+                                                                            </span>
+                                </div>
+                                <!--end::Title-->
+                            </div>
+                            <!--end::Item-->
+                        </div>
+
+                        <div id="kt_explore_toggle" class="desktop-toggle-btn me-4 h-50px float-end cursor-pointer" title="" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-trigger="hover" data-bs-original-title="Select Applicant/Co-Applicant">
+                            <!--begin::Item-->
+                            <div class="d-flex align-items-center bg-light-info rounded p-1 pe-9 form-select form-select-solid tat-btn rounded-5">
+                                <!--begin::Title-->
+                                <div class="flex-grow-1 me-2">
+                                    <span class="text-muted d-block fs-9">APPLICANT Name</span>
+                                    <a href="#" class="fw-bolder text-gray-800 text-hover-primary fs-5">TEJAPAL  RAIGAR</a>
+                                </div>
+                                <!--end::Title-->
+                                <!--begin::Lable-->
+                                <!--begin::Icon-->
+                                <span class="svg-icon svg-icon-success">
+                                    <!--begin::Svg Icon | path: icons/duotone/Home/Library.svg-->
+
+                                                                            <span class="svg-icon svg-icon-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <circle fill="#50CD89" opacity="0.3" cx="12" cy="12" r="10"></circle>
+                                                <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero"></path>
+                                            </svg>
+                                        </span>
+                                                                                                                                                <!--end::Svg Icon-->
+                                </span>
+                                <!--end::Lable-->
+                            </div>
+                            <!--end::Item-->
+                        </div>
+
+                        
+                        <div id="hide-on-data" style="display: none;">
+                            <div class="d-flex align-items-center d-lg-none ms-n3 me-1 hide-on-data" title="Show aside menu">
+                                <div class="btn btn-icon btn-active-color-white" id="kt_aside_mobile_toggle">
+                                    <i class="bi bi-list fs-1"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                         
+
+                        <!--begin::Menu wrapper-->
+                        <div class="cursor-pointer symbol symbol-circle symbol-30px symbol-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+                            <img src="https://salescrm.ummeedhfc.com/user-icon.svg" alt="user">
+                        </div>
+                        <!--begin::User account menu-->
+                        <div class="menu-dropdown menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true">
+                            <!--begin::Menu item-->
+                            <div class="menu-item px-3">
+                                <div class="menu-content d-flex align-items-center px-3">
+                                    <!--begin::Avatar-->
+                                    <div class="symbol symbol-50px me-5">
+                                        <img alt="Logo" src="https://salescrm.ummeedhfc.com/user-icon.svg">
+                                    </div>
+                                    <!--end::Avatar-->
+                                    <!--begin::Username-->
+                                    <div class="d-flex flex-column">
+                                        <div class="fw-bolder d-flex align-items-center fs-5">
+                                            admin
+                                        </div>
+                                        <a href="#" class="fw-bold text-muted text-hover-primary fs-7">UMEED092</a>
+                                    </div>
+                                    <!--end::Username-->
+                                </div>
+                            </div>
+                            <!--end::Menu item-->
+                            <!--begin::Menu separator-->
+                            <div class="separator my-2"></div>
+                            <!--end::Menu separator-->
+                            <!--begin::Menu item-->
+                            <div class="menu-item px-5">
+                                                                <a href="https://salescrm.ummeedhfc.com/cms-logout" class="menu-link px-5">Sign Out</a>
+                                                            </div>
+                            <!--end::Menu item-->
+                        </div>
+                        <!--end::User account menu-->
+                        <!--end::Menu wrapper-->
+                    </div>
+                    <!--end::User menu-->
+                </div>
+                <!--end::Toolbar wrapper-->
+            </div>
+            <!--end::Wrapper-->
+        </div>
+        <!--end::Container-->
+        <div class="container-fluid show-mobile-sm">
+            <div class="user-details d-flex align-items-center rounded-5 p-2 pe-2 h-50px">
+                <!--begin::Symbol-->
+                <div class="flex-grow-1 ms-2 me-5 d-none remove-flex-sm mb-2">
+                    <span class="user-label text-muted d-block fs-9">System ID</span>
+                    <div class="user-value fw-bolder text-gray-800 fs-7">30263765</div>
+                </div>
+                <div class="flex-grow-1 ms-2 me-5 remove-flex-sm mb-2">
+                    <span class="user-label text-muted d-block fs-9">Lead Number</span>
+                    <div class="user-value fw-bolder text-gray-800 fs-7">00147438</div>
+                </div>
+                <div class="flex-grow-1 ms-2 me-5 d-none remove-flex-sm mb-2">
+                    <span class="user-label text-muted d-block fs-9">Lead created RM Name</span>
+                    <div class="user-value fw-bolder text-gray-800 fs-7">Deshraj  Saini</div>
+                </div>
+                <div class="flex-grow-1 ms-2 me-5 remove-flex-sm mb-2">
+                    <span class="user-label text-muted d-block fs-9">Branch</span>
+                    <div class="user-value fw-bolder text-gray-800 fs-7">CHOMU</div>
+                </div>
+                <div class="flex-grow-1 ms-2 me-5 remove-flex-sm mb-2">
+                    <span class="user-label text-muted d-block fs-9">Product</span>
+                    <div class="user-value fw-bolder text-gray-800 fs-7">HL</div>
+                </div>
+
+                                <div class="float-start me-5 mb-2">
+                    <span class="user-label text-muted d-block fs-9">Loan Amount</span>
+                    <div class="user-value fw-bolder text-gray-800 fs-7">700000</div>
+                </div>
+                <div class="float-start me-5 mb-2">
+                    <span class="user-label text-muted d-block fs-9">Final Rate</span>
+                    <div class="user-value fw-bolder text-gray-800 fs-7">14%</div>
+                </div>
+                <div class="float-start me-5 mb-2">
+                    <span class="user-label text-muted d-block fs-9">Tenure</span>
+                    <div class="user-value fw-bolder text-gray-800 fs-7">144 Months</div>
+                </div>
+                <div class="float-start me-5 mb-2">
+                    <span class="user-label text-muted d-block fs-9">Transaction Type/End Use</span>
+                    <div class="user-value fw-bolder text-gray-800 fs-7">HOME CONSTRUCTION</div>
+                </div>
+                <div class="float-start me-5 mb-2">
+                    <span class="user-label text-muted d-block fs-9">Scheme</span>
+                    <div class="user-value fw-bolder text-gray-800 fs-7">NON BALANCE TRANSFER</div>
+                </div>
+                <!--end::Lable-->
+            </div>
+        </div>
+        
+    </div>
+    <style type="text/css">
+    li .active {
+        background-color: transparent !important;
+    }
+
+</style>
+
+<!--begin::Details-->
+<div class="mobile-user-details container border-bottom customer-details mt-4 tab-show-responsive">
+    <!--begin::Symbol-->
+
+
+
+
+
+    <!--end::Symbol-->
+    <!--end::Col-->
+
+
+
+
+
+
+
+
+    <!--end::Col-->
+    <div class="clearfix"></div>
+    <!--end::Col-->
+
+
+
+
+
+
+
+
+    <!--end::Col-->
+
+    <!--end::Col-->
+
+
+
+
+
+
+
+
+    <!--end::Col-->
+    <!--end::Col-->
+
+
+
+
+
+
+
+
+    <!--end::Col-->
+
+    <!--end::Col-->
+
+
+
+
+
+
+
+
+    <!--end::Col-->
+
+
+    <div id="kt_drawer_chat_toggle" class="mb-4 me-4 h-50px float-end cursor-pointer" title="" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-trigger="hover" data-bs-original-title="Watch TAT">
+        <!--begin::Item-->
+        <div class="d-flex align-items-center bg-light-warning rounded p-2 pe-8 form-select form-select-solid tat-btn rounded-5">
+            <!--begin::Icon-->
+            <span class="svg-icon svg-icon-muted svg-icon-2hx me-3"><svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                            <path d="M10.9630156,7.5 L11.0475062,7.5 C11.3043819,7.5 11.5194647,7.69464724 11.5450248,7.95024814 L12,12.5 L15.2480695,14.3560397 C15.403857,14.4450611 15.5,14.6107328 15.5,14.7901613 L15.5,15 C15.5,15.2109164 15.3290185,15.3818979 15.1181021,15.3818979 C15.0841582,15.3818979 15.0503659,15.3773725 15.0176181,15.3684413 L10.3986612,14.1087258 C10.1672824,14.0456225 10.0132986,13.8271186 10.0316926,13.5879956 L10.4644883,7.96165175 C10.4845267,7.70115317 10.7017474,7.5 10.9630156,7.5 Z" fill="#000000"></path>
+                            <path d="M7.38979581,2.8349582 C8.65216735,2.29743306 10.0413491,2 11.5,2 C17.2989899,2 22,6.70101013 22,12.5 C22,18.2989899 17.2989899,23 11.5,23 C5.70101013,23 1,18.2989899 1,12.5 C1,11.5151324 1.13559454,10.5619345 1.38913364,9.65805651 L3.31481075,10.1982117 C3.10672013,10.940064 3,11.7119264 3,12.5 C3,17.1944204 6.80557963,21 11.5,21 C16.1944204,21 20,17.1944204 20,12.5 C20,7.80557963 16.1944204,4 11.5,4 C10.54876,4 9.62236069,4.15592757 8.74872191,4.45446326 L9.93948308,5.87355717 C10.0088058,5.95617272 10.0495583,6.05898805 10.05566,6.16666224 C10.0712834,6.4423623 9.86044965,6.67852665 9.5847496,6.69415008 L4.71777931,6.96995273 C4.66931162,6.97269931 4.62070229,6.96837279 4.57348157,6.95710938 C4.30487471,6.89303938 4.13906482,6.62335149 4.20313482,6.35474463 L5.33163823,1.62361064 C5.35654118,1.51920756 5.41437908,1.4255891 5.49660017,1.35659741 C5.7081375,1.17909652 6.0235153,1.2066885 6.2010162,1.41822583 L7.38979581,2.8349582 Z" fill="#000000" opacity="0.3"></path>
+                            </svg></span>
+            <!--end::Icon-->
+            <!--begin::Title-->
+            <div class="flex-grow-1 me-2">
+                <a href="#" class="fw-bolder text-gray-800 text-hover-primary fs-7 d-block">TAT Details</a>
+                <span class="text-muted fs-9"></span> <span class="badge badge-danger pt-1 pb-1 ms-2">
+                                                                                        35 Days
+                                                        </span>
+            </div>
+            <!--end::Title-->
+        </div>
+        <!--end::Item-->
+    </div>
+
+    <div id="kt_explore_toggle" class="mb-4 me-4 h-50px float-end cursor-pointer" title="" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-trigger="hover" data-bs-original-title="Select Applicant/Co-Applicant">
+        <!--begin::Item-->
+        <div class="d-flex align-items-center bg-light-info rounded p-2 pe-9 form-select form-select-solid tat-btn rounded-5">
+            <!--begin::Icon-->
+            <span class="svg-icon svg-icon-warning me-3">
+                    <!--begin::Svg Icon | path: icons/duotone/Home/Library.svg-->
+                    <span class="svg-icon svg-icon-muted svg-icon-2hx"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M17 6C17 8.76142 14.7614 11 12 11C9.23858 11 7 8.76142 7 6C7 3.23858 9.23858 1 12 1C14.7614 1 17 3.23858 17 6Z" fill="#121319"></path>
+                    <path opacity="0.25" fill-rule="evenodd" clip-rule="evenodd" d="M18.818 14.1248C18.2016 13.4101 17.1428 13.4469 16.3149 13.9001C15.0338 14.6013 13.5635 15 12 15C10.4365 15 8.96618 14.6013 7.68505 13.9001C6.85717 13.4469 5.79841 13.4101 5.182 14.1248C3.82222 15.7014 3 17.7547 3 20V21C3 22.1045 3.89543 23 5 23H19C20.1046 23 21 22.1045 21 21V20C21 17.7547 20.1778 15.7014 18.818 14.1248Z" fill="#191213"></path>
+                    </svg></span>
+                <!--end::Svg Icon-->
+                </span>
+            <!--end::Icon-->
+            <!--begin::Title-->
+            <div class="flex-grow-1 me-2">
+                <span class="text-muted d-block fs-9">APPLICANT Name</span>
+                <a href="#" class="fw-bolder text-gray-800 text-hover-primary fs-5">TEJAPAL  RAIGAR</a>
+            </div>
+            <!--end::Title-->
+            <!--begin::Lable-->
+            <!--begin::Icon-->
+            <span class="svg-icon svg-icon-success">
+                    <!--begin::Svg Icon | path: icons/duotone/Home/Library.svg-->
+                    <span class="svg-icon svg-icon-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                            <circle fill="#50CD89" opacity="0.3" cx="12" cy="12" r="10"></circle>
+                            <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero"></path>
+                        </svg>
+                    </span>
+                <!--end::Svg Icon-->
+                </span>
+            <!--end::Lable-->
+        </div>
+        <!--end::Item-->
+    </div>
+</div>
+
+
+<div class="main-tabs position-relative responsive-main-tab">
+    <div class="p-0 pb-0 ps-4 pe-4">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+
+    <!--end::Details-->
+        <!--begin::Navs-->
+        <div class="d-flex overflow-auto h-35px mt-0">
+            <ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bolder flex-nowrap main-tabs">
+                <!--begin::Nav item-->
+
+                <li class="nav-item ">
+                    <a id="personal-details" class="disableLink nav-link text-active-primary-tab fs-8 disabled_menu validation_error 
+                     validation_success                         " href="all_tabs.html">Personal Details</a>
+                </li>
+
+                <li class="nav-item ">
+                    <a id="document_upload_and_report" class="disableLink nav-link text-active-primary-tab fs-8 disabled_menu validation_error 
+
+                     validation_success                         " href="document_upload_report.html">Document Upload &amp; Report</a>
+                </li>
+
+               
+
+                <li class="nav-item ">
+                    <a id="pd-observation" class="disableLink nav-link text-active-primary-tab fs-8 disabled_menu validation_error   validation_success " href="pd_ob.html">PD Observation</a>
+                </li>
+                <!--end::Nav item-->
+                <!--begin::Nav item-->
+               
+                <!--end::Nav item-->
+                <!--begin::Nav item-->
+
+                <li class="nav-item ">
+                    <a class="disableLink nav-link text-active-primary-tab fs-8  disabled_menu  
+
+                     validation_success                         " href="income.html">Income Assessment</a>
+                </li>
+
+                <li class="nav-item ">
+                    <a id="parentCashFlow" class="disableLink nav-link text-active-primary-tab fs-8  disabled_menu  active
+                         validation_success " href="cashflow.html">Cash Flow</a>
+                </li>
+                <!--end::Nav item-->
+                <!--begin::Nav item-->
+                <li class="nav-item">
+                    <a id="cam-tab" class="disableLink nav-link text-active-primary-tab fs-8 disabled_menu 
+                                         validation_success                         " href="cam.html">CAM</a>
+                </li>
+                <li class="nav-item">
+                    <a id="cam-tab" class="disableLink nav-link text-active-primary-tab fs-8 disabled_menu 
+                                         validation_success                         " href="C:\Users\UHF0445\OneDrive - Ummeed Housing Finance Private Limited\Desktop\Desktop 3\html_file\CAM Report.pdf">CAM Report</a>
+                </li>
+
+                <!--end::Nav item-->
+
+                <!--begin::Nav item-->
+              
+                <!--end::Nav item-->
+
+                <!--begin::Nav item-->
+                
+                <!--end::Nav item-->
+
+                <!--begin::Nav item-->
+                
+                <!--end::Nav item-->
+                <!--begin::Nav item-->
+                
+
+                
+                <!--end::Nav item-->
+                <!--begin::Nav item-->
+           
+                <!--begin::Nav item-->
+                
+
+             
+
+
+
+                <!--end::Nav item-->
+
+
+            </ul>
+        </div>
+        <!--begin::Navs-->
+    </div>
+
+
+
+</div>
+
+
+    <!-- applicant co applicant removed added in app.blade -->
+
+</div>
+
+<script>
+    document.getElementById("read_more").addEventListener('click', changeClass);
+
+    function changeClass() {
+        var content = document.getElementById("extra_content");
+        var btn = document.getElementById("read_more");
+        content.classList.toggle('show-sm');
+
+        // Toggle extra-content-sm class based on button visibility
+        var userDetails = document.querySelector('.user-details');
+        userDetails.classList.toggle('extra-content-sm');
+
+        if (content.classList.contains("show-sm")) {
+            btn.innerHTML = "Show Less";
+        } else {
+            btn.innerHTML = "Show </br> More";
+        }
+    }
+</script>
+
+<script>
+    $(".disableLink").click(function() {
+        $(this).addClass('disabledbutton');
+    });
+</script>
+<!-- Livewire Component wire-end:RHQT3QIAKeHP1tQjHAUC -->                                    <!--begin::Content-->
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column flex-column-fluid pt-2 pb-2" id="kt_content">
+                                <!-- header added -->
+                                                                    <div wire:id="DwfUA7HT5reEiPD57QQa"><!--begin::Exolore drawer-->
+<div wire:loading="" class="loader-main-nk">
+    <div style="" class="loader-nk">
+        <div class="overlay-livewire-loader">
+            <div class="spinner-border text-primary" role="status">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="kt_explore" class="bg-white close-slider drawer drawer-end" data-kt-drawer="true" data-kt-drawer-name="explore" data-kt-drawer-activate="true" data-kt-drawer-overlay="true" data-kt-drawer-width="{default:'320px', 'lg': '375px'}" data-kt-drawer-direction="end" data-kt-drawer-toggle="#kt_explore_toggle" data-kt-drawer-close="#kt_explore_close" style="width: 375px !important;">
+    <!--begin::Card-->
+    <div class="card shadow-none w-100">
+        <!--begin::Header-->
+        <div class="modal-header" id="kt_explore_header">
+            <h3 class="card-title fw-bolder text-gray-700">Select Applicant/Co-Applicant</h3>
+            <div class="">
+                <button type="button" class="btn btn-sm btn-icon me-n5" id="kt_explore_close">
+                    <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
+                    <span class="svg-icon svg-icon-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                            <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)" fill="#000000">
+                                <rect fill="#000000" x="0" y="7" width="16" height="2" rx="1"></rect>
+                                <rect fill="#000000" opacity="0.5" transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)" x="0" y="7" width="16" height="2" rx="1"></rect>
+                            </g>
+                        </svg>
+                    </span>
+                    <!--end::Svg Icon-->
+                </button>
+            </div>
+        </div>
+        <!--end::Header-->
+        <!--begin::Body-->
+        <div class="card-body bg-light p-5" id="kt_explore_body" style="background-color: #f5f8fa!important; border-radius:0px;">
+            <!--begin::Content-->
+            <div id="kt_explore_scroll" class="scroll-y me-n5 pe-5" data-kt-scroll="true" data-kt-scroll-height="auto" data-kt-scroll-wrappers="#kt_explore_body" data-kt-scroll-dependencies="#kt_explore_header, #kt_explore_footer" data-kt-scroll-offset="5px" style="height: 812px;">
+                <!--begin::Demos-->
+                <div class="mb-0">
+                                        <div class="row">
+                        <div class="col-sm-9">
+                            <!--begin::Item-->
+                            <a href="https://salescrm.ummeedhfc.com/credit-analysis-new/personal-info?lead_id=30263765&amp;coapplicant_no=0" class="fw-bolder text-gray-800 text-hover-primary fs-5">
+                                <div class="d-flex align-items-center bg-white rounded p-4 mb-4 applicant-box">
+                                    <!--begin::Icon-->
+                                    <div class="symbol symbol-45px me-3">
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                    </div>
+                                    <!--end::Icon-->
+                                    <!--begin::Title-->
+                                    <div class="flex-grow-1 me-2">
+                                        <span class="text-muted d-block fs-8">APPLICANT</span>
+                                        TEJAPAL  RAIGAR
+                                    </div>
+                                    <!--end::Title-->
+                                    <!--begin::Lable-->
+                                    <!--begin::Icon-->
+                                    <span class="svg-icon svg-icon-success">
+                                        <!--begin::Svg Icon | path: icons/duotone/Home/Library.svg-->
+
+                                                                                    <span class="svg-icon svg-icon-1 svg-icon-2hx">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <circle fill="#50CD89" opacity="0.3" cx="12" cy="12" r="10"></circle>
+                                                    <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero"></path>
+                                                </svg>
+                                            </span>
+                                        
+
+                                                                                <!--end::Svg Icon-->
+                                    </span>
+                                    <!--end::Lable-->
+                                </div>
+                            </a>
+                        </div>
+                                            </div>
+                                        <div class="row">
+                        <div class="col-sm-9">
+                            <!--begin::Item-->
+                            <a href="https://salescrm.ummeedhfc.com/credit-analysis-new/personal-info?lead_id=30263765&amp;coapplicant_no=1" class="fw-bolder text-gray-800 text-hover-primary fs-5">
+                                <div class="d-flex align-items-center bg-white rounded p-4 mb-4 applicant-box">
+                                    <!--begin::Icon-->
+                                    <div class="symbol symbol-45px me-3">
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                    </div>
+                                    <!--end::Icon-->
+                                    <!--begin::Title-->
+                                    <div class="flex-grow-1 me-2">
+                                        <span class="text-muted d-block fs-8">CO-APPLICANT 1</span>
+                                        KAMLESH KUMAR RAIGAR
+                                    </div>
+                                    <!--end::Title-->
+                                    <!--begin::Lable-->
+                                    <!--begin::Icon-->
+                                    <span class="svg-icon svg-icon-success">
+                                        <!--begin::Svg Icon | path: icons/duotone/Home/Library.svg-->
+
+                                        
+
+                                                                                    <span class="svg-icon svg-icon-1 svg-icon-2hx">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <circle fill="#50CD89" opacity="0.3" cx="12" cy="12" r="10"></circle>
+                                                    <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero"></path>
+                                                </svg>
+                                            </span>
+                                                                                <!--end::Svg Icon-->
+                                    </span>
+                                    <!--end::Lable-->
+                                </div>
+                            </a>
+                        </div>
+                                            </div>
+                                        <div class="row">
+                        <div class="col-sm-9">
+                            <!--begin::Item-->
+                            <a href="https://salescrm.ummeedhfc.com/credit-analysis-new/personal-info?lead_id=30263765&amp;coapplicant_no=2" class="fw-bolder text-gray-800 text-hover-primary fs-5">
+                                <div class="d-flex align-items-center bg-white rounded p-4 mb-4 applicant-box">
+                                    <!--begin::Icon-->
+                                    <div class="symbol symbol-45px me-3">
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                    </div>
+                                    <!--end::Icon-->
+                                    <!--begin::Title-->
+                                    <div class="flex-grow-1 me-2">
+                                        <span class="text-muted d-block fs-8">CO-APPLICANT 2</span>
+                                        MANNI  DEVI
+                                    </div>
+                                    <!--end::Title-->
+                                    <!--begin::Lable-->
+                                    <!--begin::Icon-->
+                                    <span class="svg-icon svg-icon-success">
+                                        <!--begin::Svg Icon | path: icons/duotone/Home/Library.svg-->
+
+                                        
+
+                                                                                    <span class="svg-icon svg-icon-1 svg-icon-2hx">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <circle fill="#50CD89" opacity="0.3" cx="12" cy="12" r="10"></circle>
+                                                    <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#000000" fill-rule="nonzero"></path>
+                                                </svg>
+                                            </span>
+                                                                                <!--end::Svg Icon-->
+                                    </span>
+                                    <!--end::Lable-->
+                                </div>
+                            </a>
+                        </div>
+                                            </div>
+                                        <!--end::Item-->
+                </div>
+                <!--end::Demos-->
+            </div>
+            <!--end::Content-->
+
+
+            <!--begin::Modal - Approver Remarks -->
+            <div class="modal fade" id="swap_applicant" tabindex="-1" aria-hidden="true" wire:ignore.self="">
+                <!--begin::Modal dialog-->
+                <div class="modal-dialog modal-dialog-centered modal-xl">
+                    <!--begin::Modal content-->
+                    <div class="modal-content rounded">
+                        <!--begin::Modal header-->
+                        <div class="modal-header justify-content-end border-0 pb-0">
+                            <!--begin::Close-->
+                            <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                                <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
+                                <span class="svg-icon svg-icon-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)" fill="#000000">
+                                            <rect fill="#000000" x="0" y="7" width="16" height="2" rx="1"></rect>
+                                            <rect fill="#000000" opacity="0.5" transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000)" x="0" y="7" width="16" height="2" rx="1"></rect>
+                                        </g>
+                                    </svg>
+                                </span>
+                                <!--end::Svg Icon-->
+                            </div>
+                            <!--end::Close-->
+                        </div>
+                        <!--end::Modal header-->
+                        <!--begin::Modal body-->
+                        <div class="modal-body pt-0 px-5 px-xl-20">
+                            <div class="d-flex flex-column">
+                                <!--begin::Col-->
+                                <div class="col-lg-12">
+                                    <!--begin::Tab content-->
+                                    <div class="tab-content rounded h-100">
+                                        <div class="m-4">
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <label class="required fs-8" id="first_member_label">First Member</label>
+                                                    <select class="form-select pe-none no-border no-arrow" id="first_member_select" wire:model.defer="first_member_applicant_no">
+                                                        <option value="">Select</option>
+                                                                                                                    <option value="0">TEJAPAL  RAIGAR</option>
+                                                                                                                    <option value="1">KAMLESH KUMAR RAIGAR</option>
+                                                                                                                    <option value="2">MANNI  DEVI</option>
+                                                                                                            </select>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <label class="required fs-8">Swap With</label>
+                                                    <select class="form-select" id="second_member_select" wire:model.defer="second_member_applicant_no">
+                                                        <option value="">Select</option>
+                                                                                                                    <option value="0">TEJAPAL  RAIGAR</option>
+                                                                                                                    <option value="1">KAMLESH KUMAR RAIGAR</option>
+                                                                                                                    <option value="2">MANNI  DEVI</option>
+                                                                                                            </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <a onclick="if (confirm('Are you sure, you want to proceed with the swap functionality?')) { $('#kt_explore').removeClass('drawer-on');Livewire.emit('submitSwap', $('#first_member_select').val()) }" class="btn btn-primary w-100px" data-dismiss="modal" data-bs-dismiss="modal">Submit</a>
+                                        </div>
+                                    </div>
+                                    <!--end::Tab content-->
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                        </div>
+                        <!--end::Modal body-->
+                    </div>
+                    <!--end::Modal content-->
+                </div>
+                <!--end::Modal dialog-->
+            </div>
+            <!--end::Modal - Approver Remarks -->
+
+        </div>
+        <!--end::Body-->
+    </div>
+    <!--end::Card-->
+</div>
+<!--end::Exolore drawer-->
+</div>
+<!-- Livewire Component wire-end:DwfUA7HT5reEiPD57QQa -->                                                                <!-- header added -->
+                                
+
+    <div class="container-fluid">
+    	<div class="card-toolbar mb-2" style="z-index: 99;position: relative;">
+            <ul class="nav sub-tab">
+                <li class="nav-item">
+                    <a class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary disabled_menu fw-bolder px-4 me-1 validation_success active" data-bs-toggle="tab" href="#income-details-tab" id="tab_income_detail">Income Details</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary disabled_menu fw-bolder px-4 me-1 validation_success" data-bs-toggle="tab" href="#household-expenses-tab" id="tab_expense">Expenses</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary disabled_menu fw-bolder px-4 me-1 validation_success" data-bs-toggle="tab" href="#assest-creation-tab" id="tab_asset_creation">Asset Creation</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary disabled_menu fw-bolder px-4 me-1 validation_success" data-bs-toggle="tab" href="#surplus-charges-tab" id="tab_surplus_cash">Surplus Cash</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="tab-content">
+            <div class="tab-pane fade active show" id="income-details-tab">
+
+    		    <span wire:id="2nCXBCeLTwopyFLzoTMv">
+	<div class=" disabledbutton ">
+		<div class="row mb-2 primary-action">
+			<div class="col-lg-12">
+
+								<div class="main-box d-table ps-2 pe-2 float-end me-4">
+					<div class="fs-8 fst-italic">Total Income</div>
+					<div class="monthly-income fs-4 lh-1"><span class="rupee-font">₹</span> 23040</div>
+				</div>
+			</div>
+		</div>
+
+                        				<div class="row">
+			<div class="col-md-12 mb-3">
+				<div class="card h-lg-100">
+					<div class="card-body p-4">
+						<div class="table-responsive table-small">
+
+                            <!--begin::Table-->
+                            <table id="kt_datatable_horizontal_scroll" class="table table-row-dashed table-row-gray-300 align-middle kt_datatable_horizontal_scroll dataTable">
+                                <!--begin::Table body-->
+                                <tbody>
+                                    <tr>
+                                        <th>
+                                            Applicant Type
+                                        </th>
+                                                                                    <th>Applicant</th>
+                                                                                    <th>Co Applicant 1</th>
+                                                                                    <th>Co Applicant 2</th>
+                                                                                <th>Total</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bolder">
+                                            Applicant Name
+                                        </td>
+                                                                                    <td>TEJAPAL  RAIGAR</td>
+                                                                                    <td>KAMLESH KUMAR RAIGAR</td>
+                                                                                    <td>MANNI  DEVI</td>
+                                                                                <td class="fw-bolder">NA</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bolder">
+                                            Assessed Income
+                                        </td>
+                                                                                    <td>23040</td>
+                                                                                    <td>0</td>
+                                                                                    <td>0</td>
+                                                                                <td class="fw-bolder">23040</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bolder">
+                                            Rental Income
+                                        </td>
+                                                                                    <td>0</td>
+                                                                                    <td>0</td>
+                                                                                    <td>0</td>
+                                                                                <td class="fw-bolder">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bolder">
+                                            Other Income
+                                        </td>
+                                                                                    <td>0</td>
+                                                                                    <td>0</td>
+                                                                                    <td>0</td>
+                                                                                <td class="fw-bolder">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bolder">
+                                            Bonus
+                                        </td>
+                                                                                    <td>0</td>
+                                                                                    <td>NA</td>
+                                                                                    <td>NA</td>
+                                                                                <td class="fw-bolder">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bolder">
+                                            Agriculture Income
+                                        </td>
+                                                                                    <td>0</td>
+                                                                                    <td>NA</td>
+                                                                                    <td>NA</td>
+                                                                                <td class="fw-bolder">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bolder">
+                                            Documented Income
+                                        </td>
+                                                                                    <td>0</td>
+                                                                                    <td>NA</td>
+                                                                                    <td>NA</td>
+                                                                                <td class="fw-bolder">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bolder">
+                                            Total Monthly Income
+                                        </td>
+                                                                                    <td class="fw-bolder">23040</td>
+                                                                                    <td class="fw-bolder">NA</td>
+                                                                                    <td class="fw-bolder">NA</td>
+                                                                                <td class="fw-bolder">23040</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bolder">
+                                            Existing Obligation
+                                        </td>
+                                                                                    <td>0</td>
+                                                                                    <td>NA</td>
+                                                                                    <td>3860</td>
+                                                                                <td class="fw-bolder">3860</td>
+                                    </tr>
+                                </tbody>
+                                <!--end::Table body-->
+                            </table>
+                            <!--end::Table-->
+
+                        </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</span>
+
+
+
+<!-- Livewire Component wire-end:2nCXBCeLTwopyFLzoTMv -->
+            </div>
+            <div class="tab-pane fade" id="household-expenses-tab">
+
+                <span wire:id="4erUo6mCgcMxDoWgW58s">
+
+        <div class="">
+
+
+            <div class="row mb-2 primary-action">
+                <div class="col-lg-12">
+
+                                        <div class="main-box d-table ps-2 pe-2 float-end me-4">
+                        <div class="fs-8 fst-italic">Total Expense</div>
+                        <div class="monthly-income fs-4 lh-1"><span class="rupee-font">₹</span> 6500</div>
+                    </div>
+                    <div class="main-box d-table ps-2 pe-2 float-end me-4">
+                        <div class="fs-8 fst-italic">Total NDI</div>
+                        <div class="monthly-income fs-4 lh-1"><span class="rupee-font">₹</span> 12680</div>
+                    </div>
+                </div>
+            </div>
+
+                                                <div class="row  disabledbutton ">
+                <div class="col-md-7 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body p-4">
+                            <div class="row">
+                                <!--begin::Col-->
+                                <div class="col-md-4 mb-9">
+                                    <label class="required fs-8 fw-bold">Food Expenditure</label>
+                                    <input type="text" class="form-control " placeholder="0" wire:model.lazy="food_expenditure">
+                                                                      </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-md-4 mb-9">
+                                    <label class="fs-8 fw-bold">Rent</label>
+                                    <input type="text" class="form-control " placeholder="0" wire:model.lazy="rent">
+                                                                      </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-md-4 mb-9">
+                                    <label class="required fs-8 fw-bold">Water &amp; Electricity</label>
+                                    <input type="text" class="form-control " placeholder="0" wire:model.lazy="water_electricity">
+                                                                       </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-md-4 mb-9">
+                                    <label class="required fs-8 fw-bold">Telephone</label>
+                                    <input type="text" class="form-control " placeholder="0" wire:model.lazy="telephone">
+                                                                      </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-md-4 mb-9">
+                                    <label class="required fs-8 fw-bold">Transport</label>
+                                    <input type="text" class="form-control " placeholder="0" wire:model.lazy="transport">
+                                                                      </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-md-4 mb-9">
+                                    <label class=" fs-8 fw-bold">Education</label>
+                                    <input type="text" class="form-control " placeholder="0" wire:model.lazy="education">
+                                                                      </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-md-4 mb-9">
+                                    <label class=" fs-8 fw-bold">Medical Expenditure</label>
+                                    <input type="text" class="form-control " placeholder="0" wire:model.lazy="medical_expenditure">
+                                                                      </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-md-4 mb-9">
+                                    <label class=" fs-8 fw-bold">Clothing</label>
+                                    <input type="text" class="form-control " placeholder="0" wire:model.lazy="clothing">
+                                                                       </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-md-4 mb-9">
+                                    <label class=" fs-8 fw-bold">Entertainment</label>
+                                    <input type="text" class="form-control " placeholder="0" wire:model.lazy="entertainment">
+                                                                      </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-md-4 mb-9">
+                                    <label class=" fs-8 fw-bold">Insurance</label>
+                                    <input type="text" class="form-control " placeholder="0" wire:model.lazy="insurance">
+                                                                     </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-md-4 mb-9">
+                                    <label class=" fs-8 fw-bold">Chits / Pigmy</label>
+                                    <input type="text" class="form-control " placeholder="0" wire:model.lazy="chits">
+                                                                    </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-md-4 mb-9">
+                                    <label class=" fs-8 fw-bold">Kitchen</label>
+                                    <input type="text" class="form-control " placeholder="0" wire:model.lazy="kitchen">
+                                                                    </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-md-4 mb-9">
+                                    <label class=" fs-8 fw-bold">Fuel</label>
+                                    <input type="text" class="form-control " placeholder="0" wire:model.lazy="fuel">
+                                                                    </div>
+                                <!--end::Col-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body p-4">
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table class="table border table-row-dashed gy-3 gs-5">
+                                        <thead>
+                                        <tr class="fw-bold fs-6 text-gray-800 border-bottom-2 border-gray-200">
+                                            
+                                            <th class="min-w-150px">Others</th>
+                                            <th class="min-w-100px">Amount</th>
+                                            <th class="min-w-100px text-end">Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                              <tr>
+                                            <td><input type="text" class="form-control" placeholder="" wire:model.lazy="others_income_name.0">
+                                                                                        </td>
+                                            <td><input type="text" class="form-control" placeholder="0" wire:model.lazy="other_income_amount.0">
+                                                                                          </td>
+                                            <td class="text-end">
+                                                <a wire:click="addMoreHouseHoldIncome(0)" class="btn btn-icon btn-bg-primary btn-active-color-primary btn-sm">
+                                                    <!--begin::Svg Icon | path: assets/media/icons/duotone/Code/Plus.svg-->
+                                                    <span class="svg-icon svg-icon-3">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"></circle>
+                                                            <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000"></path>
+                                                        </svg>
+                                                    </span>
+                                                    <!--end::Svg Icon-->
+                                                </a>
+
+                                            </td>
+                                        </tr>
+                                                                                                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-12 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body p-4">
+                            <h3 class="fw-bolder text-primary font-12">Net Disposal Income Details</h3>
+                            <div class="row">
+                                <!--begin::Col-->
+                                <div class="col-md-3 mb-9">
+                                    <label class="fs-8 fw-bold">Assessed Monthly Income</label>
+                                    <input type="text" class="form-control " placeholder="0" wire:model.lazy="assessed_monthly_income" readonly="">
+                                                                      </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-md-3 mb-9">
+                                    <label class="fs-8 fw-bold">Existing EMI</label>
+                                    <input type="text" class="form-control " placeholder="0" wire:model.lazy="existing_emi" readonly="">
+                                                                      </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-md-3 mb-9">
+                                    <label class="fs-8 fw-bold">Total Expense</label>
+                                    <input type="text" class="form-control " placeholder="0" wire:model.lazy="total_expense" readonly="">
+                                                                      </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-md-3 mb-9">
+                                    <label class="fs-8 fw-bold">Total Net Disposable Income</label>
+                                    <input type="text" class="form-control " placeholder="0" wire:model.lazy="total_net_disposable_income" readonly="">
+                                                                      </div>
+                                <!--end::Col-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+</span>
+
+
+
+<!-- Livewire Component wire-end:4erUo6mCgcMxDoWgW58s -->
+            </div>
+
+            <div class="tab-pane fade" id="assest-creation-tab">
+
+                <span wire:id="vlF4n07nJVBlCR1j9AvW" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;vlF4n07nJVBlCR1j9AvW&quot;,&quot;name&quot;:&quot;credit-analysis.asset-creation-component&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;credit-analysis-new\/cash-flow&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[&quot;setDateOfPurchase&quot;]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;b4757fdb&quot;,&quot;data&quot;:{&quot;description_of_the_asset&quot;:[&quot;&quot;],&quot;type_of_asset_creation&quot;:[&quot;&quot;],&quot;asset_owner&quot;:[&quot;&quot;],&quot;proof_of_document&quot;:[&quot;&quot;],&quot;date_of_purchase&quot;:[&quot;&quot;],&quot;no_of_months&quot;:[&quot;&quot;],&quot;investment_value&quot;:[&quot;&quot;],&quot;document_value&quot;:[&quot;&quot;],&quot;consider_value&quot;:[&quot;&quot;],&quot;verified_by&quot;:[&quot;admin&quot;],&quot;policy_remarks&quot;:[&quot;&quot;],&quot;applicant_coapplicants_list&quot;:[{&quot;name_title&quot;:&quot;Applicant&quot;,&quot;name&quot;:&quot;TEJAPAL  RAIGAR&quot;,&quot;applicant_no&quot;:0},{&quot;name_title&quot;:&quot;Co-Applicant-1&quot;,&quot;name&quot;:&quot;KAMLESH KUMAR RAIGAR&quot;,&quot;applicant_no&quot;:1},{&quot;name_title&quot;:&quot;Co-Applicant-2&quot;,&quot;name&quot;:&quot;MANNI  DEVI&quot;,&quot;applicant_no&quot;:2}],&quot;asset_indexes&quot;:[0],&quot;current_asset_index&quot;:0,&quot;note_enable&quot;:0,&quot;notes&quot;:&quot;&quot;,&quot;lead_id&quot;:&quot;30263765&quot;,&quot;full_deal_list&quot;:&quot;1&quot;,&quot;editSaveData&quot;:true,&quot;coapplicant_no&quot;:&quot;0&quot;,&quot;total_assets_created_by_customer_in_4_year&quot;:0,&quot;per_month_surplus_income&quot;:0,&quot;approximate_total_income_applicant&quot;:0,&quot;segment&quot;:[&quot;credit-analysis-new&quot;,&quot;cash-flow&quot;],&quot;request_data&quot;:{&quot;lead_id&quot;:&quot;30263765&quot;,&quot;coapplicant_no&quot;:&quot;0&quot;,&quot;back&quot;:&quot;3&quot;,&quot;full_deal_list&quot;:&quot;1&quot;},&quot;proof_of_document_master&quot;:{&quot;1&quot;:&quot;Registered Sale deed&quot;,&quot;2&quot;:&quot;Purchase of Invoice of Vehicle&quot;,&quot;3&quot;:&quot;Purchase Bill (GST)&quot;,&quot;4&quot;:&quot;Statement of Account - Foreclosure &quot;,&quot;5&quot;:&quot;Statement of Account - Partpayment&quot;,&quot;6&quot;:&quot;Purchase of Shares  - DMAT Statement&quot;,&quot;7&quot;:&quot;Purchase of Mutual Funds - DMAT Statement&quot;,&quot;8&quot;:&quot;OC Payment Receipt&quot;,&quot;9&quot;:&quot;Bank Statemnet &quot;},&quot;asset_creation&quot;:{&quot;1&quot;:&quot;Purchase of House without Loan&quot;,&quot;2&quot;:&quot;Purchase of Land without Loan\u00c2\u00a0&quot;,&quot;3&quot;:&quot;Purchase of House with Loan\u00c2\u00a0&quot;,&quot;4&quot;:&quot;Purchase of Land with Loan\u00c2\u00a0&quot;,&quot;5&quot;:&quot;Purchase of any vehicle without Loan\u00c2\u00a0&quot;,&quot;6&quot;:&quot;Purchase of Vehicle with Loan\u00c2\u00a0&quot;,&quot;7&quot;:&quot;Purchase of Gold Purchase of Silver\u00c2\u00a0&quot;,&quot;8&quot;:&quot;Purchase of Platinum\u00c2\u00a0&quot;,&quot;9&quot;:&quot;Purchase of Diamonds\u00c2\u00a0&quot;,&quot;10&quot;:&quot;Pre-Closure of Home Loan\u00c2\u00a0&quot;,&quot;11&quot;:&quot;Pre-Closure of LAP\u00c2\u00a0&quot;,&quot;12&quot;:&quot;Pre-Closure of PL \/ 8L\u00c2\u00a0&quot;,&quot;13&quot;:&quot;Pre-Closure of AL\u00c2\u00a0&quot;,&quot;14&quot;:&quot;Pre-Closure of Gold Loans\u00c2\u00a0&quot;,&quot;15&quot;:&quot;Part-Payment of Home Loan\u00c2\u00a0&quot;,&quot;16&quot;:&quot;Part-Payment of LAP\u00c2\u00a0&quot;,&quot;17&quot;:&quot;Part-Payment of PL \/ BL\u00c2\u00a0&quot;,&quot;18&quot;:&quot;Part-Payment of AL\u00c2\u00a0&quot;,&quot;19&quot;:&quot;Margin Money or OC payment to the Proposed property\u00c2\u00a0&quot;,&quot;20&quot;:&quot;Investments in Shares \/ PPF \/ Mutual Funds\u00c2\u00a0&quot;,&quot;21&quot;:&quot;Other&quot;},&quot;is_asset_creation&quot;:&quot;no&quot;,&quot;valiation_rule&quot;:{&quot;description_of_the_asset.*&quot;:&quot;required&quot;,&quot;type_of_asset_creation.*&quot;:&quot;required|max:200|regex:\/(^([a-zA-Z ]+))\/&quot;,&quot;asset_owner.*&quot;:&quot;required&quot;,&quot;proof_of_document.*&quot;:&quot;required&quot;,&quot;date_of_purchase.*&quot;:&quot;required&quot;,&quot;no_of_months.*&quot;:&quot;required&quot;,&quot;investment_value.*&quot;:&quot;required|integer|digits_between:3,8&quot;,&quot;document_value.*&quot;:&quot;required|integer|digits_between:3,8&quot;,&quot;consider_value.*&quot;:&quot;required&quot;,&quot;verified_by.*&quot;:&quot;required|max:30|regex:\/(^([a-zA-Z ]+))\/&quot;},&quot;validation_notes&quot;:{&quot;notes&quot;:&quot;required_if:note_enable,true,1&quot;},&quot;validation_message_notes&quot;:{&quot;notes.required_if&quot;:&quot;The notes field is required.&quot;}},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;b99751abb0871fc6a1f18d6278c7b1786d288fac855569a054208b27e8fcc69e&quot;}}">
+    <div class="">
+
+            <div class="row mb-2 primary-action">
+                <div class="">
+
+                                <div class="main-box d-table ps-2 pe-2 float-end me-4">
+                    <div class="fs-8 fst-italic">Total assets created by customer within 4 years</div>
+                    <div class="monthly-income fs-4 lh-1"><span class="rupee-font">₹</span>
+                        0</div>
+                </div>
+                <div class="main-box d-table ps-2 pe-2 float-end me-4">
+                    <div class="fs-8 fst-italic">Per month surplus income</div>
+                    <div class="monthly-income fs-4 lh-1"><span class="rupee-font">₹</span>
+                        0</div>
+                </div>
+
+            </div>
+        </div>
+
+                
+        <div class="row">
+            <div class="mb-5" data-kt-subscriptions-form="pricing">
+                <!--begin::Card header-->
+                <div class="min-h-50px pt-2 pb-2">
+                    <!--begin::Card title-->
+                    <div class="title m-0">
+                        <div class="radio-btn-group col-lg-12  disabledbutton ">
+                            <label class="form-check-label">
+                                Would you like to add asset creation?
+                            </label>
+
+                            <div class="">
+                                <div class="form-check form-check-custom form-check-solid form-check-sm radio-btn">
+                                    <!--begin:Label-->
+                                    <input class="form-check-input12 form-check-input" type="radio" value="yes" id="flexRadioSm3" name="income-radio" checked="" wire:model="is_asset_creation" wire:click="IsAssetCreation()">
+                                    <label class="form-check-label m-0" for="flexRadioSm3">
+                                        Yes
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-custom form-check-solid form-check-sm radio-btn ms-3">
+                                    <!--begin:Label-->
+                                    <input class="form-check-input12 form-check-input" type="radio" value="no" id="flexRadioSm4" name="income-radio" wire:model="is_asset_creation" wire:click="IsAssetCreation()">
+                                    <label class="form-check-label m-0" for="flexRadioSm4">
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Card title-->
+                </div>
+                <!--end::Card header-->
+            </div>
+
+            
+            <div class="col-md-12 mb-3" style="display: none">
+                <div class="card h-lg-100 mb-5 mb-xl-3">
+                    <div class="card-body p-4 pb-0">
+                        <div class="details-box">
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table id="kt_datatable_horizontal_scroll" class="table self-assessed-table border gy-3 gs-5  disabledbutton ">
+                                        <thead>
+                                            <tr class="fw-bold fs-6 text-gray-800 border-bottom-2 border-gray-200">
+                                                <th class="min-w-300px">Description of the asset</th>
+                                                <th class="min-w-150px">Type of asset creation</th>
+                                                <th class="min-w-250px">Asset Owner</th>
+                                                <th class="min-w-250px">Proof of Document</th>
+                                                <th class="">Date of Purchase </th>
+                                                <th class="">No. of months</th>
+                                                <th class="min-w-100px" style="min-width: 110px !important;">Investment Value</th>
+                                                <th class="min-w-100px" style="min-width: 110px !important;">Document Value</th>
+                                                <th class="min-w-100px" style="min-width: 110px !important;">Considered Value</th>
+                                                <th class="min-w-150px">Verified by</th>
+                                                <th class="">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <select class="form-select" wire:model.lazy="description_of_the_asset.0">
+                                                        <option>Select</option>
+                                                                                                                    <option value="1">Purchase of House without Loan
+                                                            </option>
+                                                                                                                    <option value="2">Purchase of Land without LoanÂ&nbsp;
+                                                            </option>
+                                                                                                                    <option value="3">Purchase of House with LoanÂ&nbsp;
+                                                            </option>
+                                                                                                                    <option value="4">Purchase of Land with LoanÂ&nbsp;
+                                                            </option>
+                                                                                                                    <option value="5">Purchase of any vehicle without LoanÂ&nbsp;
+                                                            </option>
+                                                                                                                    <option value="6">Purchase of Vehicle with LoanÂ&nbsp;
+                                                            </option>
+                                                                                                                    <option value="7">Purchase of Gold Purchase of SilverÂ&nbsp;
+                                                            </option>
+                                                                                                                    <option value="8">Purchase of PlatinumÂ&nbsp;
+                                                            </option>
+                                                                                                                    <option value="9">Purchase of DiamondsÂ&nbsp;
+                                                            </option>
+                                                                                                                    <option value="10">Pre-Closure of Home LoanÂ&nbsp;
+                                                            </option>
+                                                                                                                    <option value="11">Pre-Closure of LAPÂ&nbsp;
+                                                            </option>
+                                                                                                                    <option value="12">Pre-Closure of PL / 8LÂ&nbsp;
+                                                            </option>
+                                                                                                                    <option value="13">Pre-Closure of ALÂ&nbsp;
+                                                            </option>
+                                                                                                                    <option value="14">Pre-Closure of Gold LoansÂ&nbsp;
+                                                            </option>
+                                                                                                                    <option value="15">Part-Payment of Home LoanÂ&nbsp;
+                                                            </option>
+                                                                                                                    <option value="16">Part-Payment of LAPÂ&nbsp;
+                                                            </option>
+                                                                                                                    <option value="17">Part-Payment of PL / BLÂ&nbsp;
+                                                            </option>
+                                                                                                                    <option value="18">Part-Payment of ALÂ&nbsp;
+                                                            </option>
+                                                                                                                    <option value="19">Margin Money or OC payment to the Proposed propertyÂ&nbsp;
+                                                            </option>
+                                                                                                                    <option value="20">Investments in Shares / PPF / Mutual FundsÂ&nbsp;
+                                                            </option>
+                                                                                                                    <option value="21">Other
+                                                            </option>
+                                                                                                            </select>
+                                                                                                    </td>
+                                                <td><input type="text" class="form-control " placeholder="" wire:model.lazy="type_of_asset_creation.0">
+                                                    
+                                                </td>
+                                                <td>
+                                                    <select class="form-select" wire:model.lazy="asset_owner.0">
+                                                        <option>Select</option>
+
+                                                                                                                    <option value="0">
+                                                                TEJAPAL  RAIGAR
+                                                                (Applicant)</option>
+                                                                                                                    <option value="1">
+                                                                KAMLESH KUMAR RAIGAR
+                                                                (Co-Applicant-1)</option>
+                                                                                                                    <option value="2">
+                                                                MANNI  DEVI
+                                                                (Co-Applicant-2)</option>
+                                                                                                            </select>
+
+                                                                                                    </td>
+                                                <td>
+                                                    <select class="form-select" wire:model.lazy="proof_of_document.0">
+                                                        <option>Select</option>
+                                                                                                                    <option value="1">Registered Sale deed
+                                                            </option>
+                                                                                                                    <option value="2">Purchase of Invoice of Vehicle
+                                                            </option>
+                                                                                                                    <option value="3">Purchase Bill (GST)
+                                                            </option>
+                                                                                                                    <option value="4">Statement of Account - Foreclosure 
+                                                            </option>
+                                                                                                                    <option value="5">Statement of Account - Partpayment
+                                                            </option>
+                                                                                                                    <option value="6">Purchase of Shares  - DMAT Statement
+                                                            </option>
+                                                                                                                    <option value="7">Purchase of Mutual Funds - DMAT Statement
+                                                            </option>
+                                                                                                                    <option value="8">OC Payment Receipt
+                                                            </option>
+                                                                                                                    <option value="9">Bank Statemnet 
+                                                            </option>
+                                                                                                            </select>
+
+                                                                                                    </td>
+                                                <td>
+                                                    <div class="">
+                                                        <!--begin::Datepicker-->
+                                                        <input class="form-control kc_datepicker123" type="date" style="width: 130px" placeholder="Date of purchase" wire:model.lazy="date_of_purchase.0" onchange="Livewire.emit('setDateOfPurchase',0,this.value)">
+                                                                                                                <!--end::Datepicker-->
+                                                    </div>
+                                                    <!--end::Input-->
+                                                </td>
+                                                <td><input type="text" class="form-control " placeholder="" readonly="" wire:model.lazy="no_of_months.0">
+                                                                                                    </td>
+                                                <td><input type="text" class="form-control " placeholder="" wire:model.lazy="investment_value.0" wire:keydown.lazy="calculateConsiderValue(0)" wire:change.lazy="calculateConsiderValue(0)">
+                                                                                                    </td>
+                                                <td><input type="text" class="form-control " placeholder="" wire:model.lazy="document_value.0" wire:change.lazy="calculateConsiderValue(0)" wire:keydown.lazy="calculateConsiderValue(0)">
+                                                                                                    </td>
+                                                <td><input type="text" class="form-control " placeholder="" wire:model.lazy="consider_value.0" readonly="">
+                                                                                                    </td>
+                                                <td><input type="text" class="form-control " placeholder="" wire:model.lazy="verified_by.0">
+                                                                                                    </td>
+                                                <td class="text-end">
+                                                    <a wire:click="addMoreAsset()" class="btn btn-icon btn-bg-primary btn-active-color-primary btn-sm">
+                                                        <!--begin::Svg Icon | path: assets/media/icons/duotone/Code/Plus.svg-->
+                                                        <span class="svg-icon svg-icon-3">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"></circle>
+                                                                <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000"></path>
+                                                            </svg>
+                                                        </span>
+                                                        <!--end::Svg Icon-->
+                                                    </a>
+
+                                                </td>
+                                            </tr>
+                                                                                                                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</span>
+
+<script>
+    $("#kt_datepicker_8").flatpickr();
+    $("#kt_datepicker_9").flatpickr();
+
+    document.addEventListener("DOMContentLoaded", () => {
+        Livewire.hook('element.initialized', (el, component) => {
+            $(".kc_datepicker").flatpickr({
+                dateFormat: "d-m-Y",
+            });
+        })
+    });
+
+    $(document).ready(function() {
+        $('.form-select option').each(function() {
+            var myStr = $(this).text();
+            if (myStr.length > 15) {
+                // Insert a non-breaking space after every 15 characters
+                $(this).html(myStr.replace(/(.{15})/g, '$1&nbsp;'));
+            }
+        });
+    });
+</script>
+
+<!-- Livewire Component wire-end:vlF4n07nJVBlCR1j9AvW -->            </div>
+
+            <div class="tab-pane fade" id="surplus-charges-tab">
+
+                <span wire:id="qEIlO2kI99hkYy1n4JyZ">
+        <div class="">
+            <div class="row mb-2 primary-action">
+                <div class="col-lg-12">
+                                        <div class="main-box d-table ps-2 pe-2 float-end me-4">
+                      <div class="fs-8 fst-italic">Total Net surplus</div>
+                      <div class="monthly-income fs-4 lh-1"><span class="rupee-font">₹</span> 362188.5</div>
+                    </div>
+
+                </div>
+            </div>
+
+                        
+                        <div class="row">
+
+                <div class="col-md-12 mb-3">
+                    <div class="card h-lg-100 mb-5 mb-xl-3">
+                        <div class="card-body p-4 pb-0">
+                            <div class="details-box">
+                                <div class="row">
+                                    <div class="table-responsive">
+                                        <table class="table self-assessed-table border gy-3 gs-5  disabledbutton ">
+                                            <thead>
+                                            <tr class="fw-bold fs-6 text-gray-800 border-bottom-2 border-gray-200">
+                                                <th class="">Year</th>
+                                                <th class="">Turnover</th>
+                                                <th class="">Profit Margin(%)</th>
+                                                <th class="">Profit Margin</th>
+                                                <th class="">Livelyhood Expenses (%)</th>
+                                                <th class="">Livelyhood Expenses</th>
+                                                <th class="">Net Surplus</th>
+                                                <th class="">Action</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                <tr><td>
+
+                                                  <select class="form-select fixed-width" wire:model.lazy="year.0">
+                                                      <option value="">Select</option>
+                                                                                                                <option value="2017">2017</option>
+                                                                                                                <option value="2018">2018</option>
+                                                                                                                <option value="2019">2019</option>
+                                                                                                                <option value="2020">2020</option>
+                                                                                                                <option value="2021">2021</option>
+                                                                                                                <option value="2022">2022</option>
+                                                                                                                <option value="2023">2023</option>
+                                                                                                                <option value="2024">2024</option>
+                                                                                                                <option value="2025">2025</option>
+                                                                                                        </select>
+                                                                                                  </td>
+                                                <td><input type="text" class="form-control " placeholder="" wire:model.lazy="turnover.0" wire:change="calculateProfitMargin(0)">
+                                                                                                  </td>
+                                                <td><input type="text" class="form-control " placeholder="" wire:model.lazy="profit_margin_per.0" wire:change="calculateProfitMargin(0)">
+                                                                                                  </td>
+                                                <td><input type="text" class="form-control " placeholder="" wire:model.lazy="profit_margin_value.0">
+                                                                                                 </td>
+                                                <td><input type="text" class="form-control " placeholder="" wire:model.lazy="livelyhood_expenses_per.0" wire:change="calculateProfitMargin(0)">
+                                                                                                 </td>
+                                                <td><input type="text" class="form-control " placeholder="" readonly="" wire:model.lazy="livelyhood_expenses.0">
+                                                                                                 </td>
+                                                <td><input type="text" class="form-control " placeholder="" readonly="" wire:model.lazy="net_surplus.0">
+                                                                                                 </td>
+                                                <td class="text-end">
+                                                    <a wire:click="addMoreAsset()" class="btn btn-icon btn-bg-primary btn-active-color-primary btn-sm">
+                                                        <!--begin::Svg Icon | path: assets/media/icons/duotone/Code/Plus.svg-->
+                                                        <span class="svg-icon svg-icon-3">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"></circle>
+                                                    <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000"></path>
+                                                </svg>
+                                            </span>
+                                                        <!--end::Svg Icon-->
+                                                    </a>
+
+                                                </td>
+                                            </tr>
+                                                                                                                                                                                                                                            <tr>
+                                                <td>
+
+                                                  <select class="form-select" wire:model.lazy="year.1">
+                                                      <option value="">Select</option>
+                                                                                                                <option value="2017">2017</option>
+                                                                                                                <option value="2018">2018</option>
+                                                                                                                <option value="2019">2019</option>
+                                                                                                                <option value="2020">2020</option>
+                                                                                                                <option value="2021">2021</option>
+                                                                                                                <option value="2022">2022</option>
+                                                                                                                <option value="2023">2023</option>
+                                                                                                                <option value="2024">2024</option>
+                                                                                                                <option value="2025">2025</option>
+                                                                                                        </select>
+
+                                                 
+                                                </td>
+                                                <td><input type="text" class="form-control " placeholder="" wire:model.lazy="turnover.1" wire:change="calculateProfitMargin(1)">
+                                                                                                  </td>
+                                                <td><input type="text" class="form-control " placeholder="" wire:model.lazy="profit_margin_per.1" wire:change="calculateProfitMargin(1)">
+                                                                                                 </td>
+                                                <td><input type="text" class="form-control " placeholder="" readonly="" wire:model.lazy="profit_margin_value.1">
+                                                                                                   </td>
+                                                <td><input type="text" class="form-control " placeholder="" wire:model.lazy="livelyhood_expenses_per.1" wire:change="calculateProfitMargin(1)">
+                                                                                                   </td>
+                                                <td><input type="text" class="form-control " placeholder="" readonly="" wire:model.lazy="livelyhood_expenses.1">
+                                                                                                   </td>
+                                                <td><input type="text" class="form-control " placeholder="" readonly="" wire:model.lazy="net_surplus.1">
+                                                                                                   </td>
+                                                <td class="text-end">
+
+                                                    <a wire:click.lazy="removeAsset(1)" class="btn btn-icon btn-light-danger btn-sm">
+                                                        <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
+                                                        <span class="svg-icon svg-icon-4">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24"></rect>
+                                                        <path d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z" fill="#000000" fill-rule="nonzero"></path>
+                                                        <path d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" fill="#000000" opacity="0.3"></path>
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                                        <!--end::Svg Icon-->
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                                                                                                                                                                                <tr>
+                                                <td>
+
+                                                  <select class="form-select" wire:model.lazy="year.2">
+                                                      <option value="">Select</option>
+                                                                                                                <option value="2017">2017</option>
+                                                                                                                <option value="2018">2018</option>
+                                                                                                                <option value="2019">2019</option>
+                                                                                                                <option value="2020">2020</option>
+                                                                                                                <option value="2021">2021</option>
+                                                                                                                <option value="2022">2022</option>
+                                                                                                                <option value="2023">2023</option>
+                                                                                                                <option value="2024">2024</option>
+                                                                                                                <option value="2025">2025</option>
+                                                                                                        </select>
+
+                                                 
+                                                </td>
+                                                <td><input type="text" class="form-control " placeholder="" wire:model.lazy="turnover.2" wire:change="calculateProfitMargin(2)">
+                                                                                                  </td>
+                                                <td><input type="text" class="form-control " placeholder="" wire:model.lazy="profit_margin_per.2" wire:change="calculateProfitMargin(2)">
+                                                                                                 </td>
+                                                <td><input type="text" class="form-control " placeholder="" readonly="" wire:model.lazy="profit_margin_value.2">
+                                                                                                   </td>
+                                                <td><input type="text" class="form-control " placeholder="" wire:model.lazy="livelyhood_expenses_per.2" wire:change="calculateProfitMargin(2)">
+                                                                                                   </td>
+                                                <td><input type="text" class="form-control " placeholder="" readonly="" wire:model.lazy="livelyhood_expenses.2">
+                                                                                                   </td>
+                                                <td><input type="text" class="form-control " placeholder="" readonly="" wire:model.lazy="net_surplus.2">
+                                                                                                   </td>
+                                                <td class="text-end">
+
+                                                    <a wire:click.lazy="removeAsset(2)" class="btn btn-icon btn-light-danger btn-sm">
+                                                        <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
+                                                        <span class="svg-icon svg-icon-4">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24"></rect>
+                                                        <path d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z" fill="#000000" fill-rule="nonzero"></path>
+                                                        <path d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" fill="#000000" opacity="0.3"></path>
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                                        <!--end::Svg Icon-->
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                                                                            
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</span>
+
+    <script>
+        $("#kt_datepicker_8").flatpickr();
+        $("#kt_datepicker_9").flatpickr();
+
+        document.addEventListener("DOMContentLoaded", () => {
+            Livewire.hook('element.initialized', (el, component) => {
+                $(".kc_datepicker").flatpickr({
+                    dateFormat: "d-m-Y",
+                });
+            })
+        });
+    </script>
+
+
+<!-- Livewire Component wire-end:qEIlO2kI99hkYy1n4JyZ -->
+            </div>
+        </div>
+
+    </div>
+
+                            </div>
+
+                            <!--begin::Footer-->
+    <div class="footer d-flex flex-lg-column" id="kt_footer">
+        <!--begin::Container-->
+        <div class="container-fluid">
+            <!--begin::Copyright-->
+            <div class="text-dark order-2 order-md-1">
+                <span class="fw-bold me-1">© Copyright 2022.</span>
+                <a href="https://credility.in/" target="_blank" class="fw-bold text-dark text-hover-primary">Credility</a>
+            </div>
+            <!--end::Copyright-->
+            <!--begin::Menu-->
+            
+            <!--end::Menu-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Footer-->
+                        </div>
+                        <!--end::Wrapper-->
+                    </div>
+                    <!--end::Page-->
+                </div>
+
+
+
+
+
+
+<!--begin::Javascript-->
+<script>
+    function showPageLoader() {
+        $('#page_loader').css('display', 'none');
+        // $(".page-loading-overlay").removeClass("loaded");
+    }
+    function hidePageLoader() {
+        $('#page_loader').css('display', 'none');
+        // $(".page-loading-overlay").addClass("loaded");
+    }
+    //  $("#kt_datepicker_6").flatpickr();
+
+</script>
+
+<script>
+    var idleTimeout = 600000; // Idle timeout duration in milliseconds (10 minutes)
+    var logoutUrl = "https://salescrm.ummeedhfc.com/cms-logout";
+
+    var idleTimer = null;
+    function resetIdleTimer() {
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(logoutUser, idleTimeout);
+    }
+
+    function logoutUser() {
+        window.location.href = logoutUrl;
+    }
+
+    // Start the idle timer on page load or user activity
+    window.onload = resetIdleTimer;
+    document.onmousemove = resetIdleTimer;
+    document.onkeypress = resetIdleTimer;
+</script>
+
+<!--begin::Global Javascript Bundle(used by all pages)-->
+<script src="https://salescrm.ummeedhfc.com/new-design-assets/plugins/global/plugins.bundle.js"></script>
+<script src="https://salescrm.ummeedhfc.com/new-design-assets/js/scripts.bundle.js"></script>
+<!--end::Global Javascript Bundle-->
+<script src="https://salescrm.ummeedhfc.com/new-design-assets/js/custom/modals/two-factor-authentication.js"></script>
+<script src="https://salescrm.ummeedhfc.com/new-design-assets/js/custom/modals/upgrade-plan.js"></script>
+<script src="https://salescrm.ummeedhfc.com/new-design-assets/plugins/custom/datatables/datatables.bundle.js"></script>
+<script>
+	$("#kt_datepicker_6").flatpickr();
+</script>
+<!--end::Javascript-->
+
+
+
+<script>
+    $(document).ready(function() {
+
+        window.addEventListener('swal',function(e) {
+            const refresh = e.detail.refresh;
+            const redirect = e.detail.redirect;
+            Swal.fire({
+                title:  e.detail.title,
+                icon: e.detail.icon,
+            }).then((result) => {
+                if (refresh == 1) {
+                    location.reload();
+                }
+                if (redirect) {
+                    window.location.href = redirect;
+                }
+            });
+        });
+
+        window.addEventListener('swal',function(e) {
+            const redirect = e.detail.redirect;
+            Swal.fire({
+                title:  e.detail.title,
+                icon: e.detail.icon,
+            }).then((result) => {
+                if (redirect) {
+                    window.location.href = redirect;
+                }
+            });
+        });
+
+        $(document).click(function() {
+            $('.dropdown-menu.show').removeClass('show');
+        });
+
+        $('body').on('click','.apto-trigger-dropdown', function(e){
+
+            e.stopPropagation();
+
+            $(this).closest('.apto-dropdown-wrapper').find('.dropdown-menu').toggleClass('show');
+        });
+
+        $('body').on('click','.dropdown-item', function(e){
+
+            e.stopPropagation();
+
+            let $selectedValue = $(this).val();
+            let $icon          = $(this).find('svg');
+            let $btn           = $(this).closest('.apto-dropdown-wrapper').find('.apto-trigger-dropdown');
+
+            $(this).closest('.apto-dropdown-wrapper').find('.dropdown-menu').removeClass('show').attr('data-selected', $selectedValue);
+
+            $btn.find('svg').remove();
+            $btn.prepend($icon[0].outerHTML);
+        });
+
+        $(".extra-user-details").hide();
+        $(".less-btn").hide();
+        $(".more-btn").click(function(){
+//              $(".extra-user-details").show();
+            $(".extra-user-details").fadeIn(1000);
+            $(".less-btn").show();
+            $(".more-btn").hide();
+            $(".user-details").addClass("active");
+            $("#kt_header_nav").addClass("active");
+        });
+        $(".less-btn").click(function(){
+            $(".extra-user-details").hide();
+            $(".less-btn").hide();
+            $(".more-btn").show();
+            $(".user-details").removeClass("active");
+            $("#kt_header_nav").removeClass("active");
+        });
+    });
+
+    $(".add-notes").hide();
+    $(".add-notes-btn").click(function(){
+        $(".add-notes").toggleClass("d-block");
+    });
+
+    $(document).ready(function(){
+        $("#accordion-1 .toggle").click(function(){
+            $("#accordion-1").toggleClass("active");
+        });
+        $("#accordion-2 .toggle").click(function(){
+            $("#accordion-2").toggleClass("active");
+        });
+        $("#accordion-3 .toggle").click(function(){
+            $("#accordion-3").toggleClass("active");
+        });
+        $("#accordion-4 .toggle").click(function(){
+            $("#accordion-4").toggleClass("active");
+        });
+        $("#accordion-5 .toggle").click(function(){
+            $("#accordion-5").toggleClass("active");
+        });
+        $("#accordion-6 .toggle").click(function(){
+            $("#accordion-6").toggleClass("active");
+        });
+    });
+    $(document).ready(function(){
+        $("#accordion-101 .toggle").click(function(){
+            $("#accordion-101").toggleClass("active");
+        });
+        $("#accordion-102 .toggle").click(function(){
+            $("#accordion-102").toggleClass("active");
+        });
+        $("#accordion-103 .toggle").click(function(){
+            $("#accordion-103").toggleClass("active");
+        });
+        $("#accordion-104 .toggle").click(function(){
+            $("#accordion-104").toggleClass("active");
+        });
+        $("#accordion-105 .toggle").click(function(){
+            $("#accordion-105").toggleClass("active");
+        });
+        $("#accordion-106 .toggle").click(function(){
+            $("#accordion-106").toggleClass("active");
+        });
+    });
+
+    $(document).ready(function(){
+        const select = document.querySelector('table select')
+
+        select.addEventListener('change', (event) => {
+            let tempSelect = document.createElement('select'),
+                tempOption = document.createElement('option');
+
+            tempOption.textContent = event.target.options[event.target.selectedIndex].text;
+            tempSelect.style.cssText += `
+      visibility: hidden;
+      position: fixed;
+      `;
+            tempSelect.appendChild(tempOption);
+            event.target.after(tempSelect);
+
+            const tempSelectWidth = tempSelect.getBoundingClientRect().width;
+            event.target.style.width = `${tempSelectWidth}px`;
+            tempSelect.remove();
+        });
+
+        select.dispatchEvent(new Event('change'));
+    });
+
+
+
+    $(document).ready(function() {
+        $("#kt_datatable_horizontal_scroll, .kt_datatable_horizontal_scroll, #sales_deviation_datatable_horizontal_scroll").DataTable({
+            "scrollX": true,
+            "autoWidth": true,
+            "ordering": false, // Disable sorting
+            "paging": false,
+            "showNEntries" : false,
+            "bInfo" : false
+        });
+    });
+
+    $(document).ready(function() {
+        $("#full-deal-list-table").DataTable({
+            "scrollX": true,
+            "autoWidth": true,
+            "ordering": false, // Disable sorting
+            "paging": false,
+            "showNEntries" : false,
+            "bInfo" : false
+        });
+    });
+
+    $(document).ready(function() {
+        $("#kt_datatable_horizontal_scroll10").DataTable({
+            "scrollX": true,
+            "autoWidth": true,
+            "ordering": false, // Disable sorting
+            "paging": false,
+            "showNEntries" : false,
+            "bInfo" : false
+        });
+
+
+        // function resizeInput() {
+        //     $(this).attr('size', $(this).val().length);
+        // }
+        //
+        // $('input[type="text"]')
+        //     // event handler
+        //     .keyup(resizeInput)
+        //     // resize on page load
+        //     .each(resizeInput);
+        // });
+
+    $(window).on('load',function(){
+
+        setTimeout(function(){ // allowing 3 secs to fade out loader
+
+            $('.page-loader-nk').fadeOut('fast');
+
+        },360);
+
+    });
+    });
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+        Livewire.hook('element.updated', (el, component) => {
+            window.addEventListener('swal',function(e) {
+                const refresh = e.detail.refresh;
+                const redirect = e.detail.redirect;
+                Swal.fire({
+                    title:  e.detail.title,
+                    icon: e.detail.icon,
+                }).then((result) => {
+                    if (refresh == 1) {
+                        location.reload();
+                    }
+                    if (redirect) {
+                        window.location.href = redirect;
+                    }
+                });
+            });
+            $(".new_branch").val('');
+        });
+
+    });
+
+    document.addEventListener('livewire:load', function () {
+        Livewire.emit('is_insurance_amt_change');
+    });
+
+</script>
+
+
+
+
+<!-- Livewire Scripts -->
+
+<script src="/vendor/livewire/livewire.js?id=90730a3b0e7144480175" data-turbo-eval="false" data-turbolinks-eval="false"></script>
+<script data-turbo-eval="false" data-turbolinks-eval="false">
+    if (window.livewire) {
+	    console.warn('Livewire: It looks like Livewire\'s @livewireScripts JavaScript assets have already been loaded. Make sure you aren\'t loading them twice.')
+	}
+
+    window.livewire = new Livewire();
+    window.livewire.devTools(true);
+    window.Livewire = window.livewire;
+    window.livewire_app_url = '';
+    window.livewire_token = 'Gc4H49OWriAWG1x8kXVSqNts7FymW2nvxHYui0Vn';
+
+	/* Make sure Livewire loads first. */
+	if (window.Alpine) {
+	    /* Defer showing the warning so it doesn't get buried under downstream errors. */
+	    document.addEventListener("DOMContentLoaded", function () {
+	        setTimeout(function() {
+	            console.warn("Livewire: It looks like AlpineJS has already been loaded. Make sure Livewire\'s scripts are loaded before Alpine.\\n\\n Reference docs for more info: http://laravel-livewire.com/docs/alpine-js")
+	        })
+	    });
+	}
+
+	/* Make Alpine wait until Livewire is finished rendering to do its thing. */
+    window.deferLoadingAlpine = function (callback) {
+        window.addEventListener('livewire:load', function () {
+            callback();
+        });
+    };
+
+    let started = false;
+
+    window.addEventListener('alpine:initializing', function () {
+        if (! started) {
+            window.livewire.start();
+
+            started = true;
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        if (! started) {
+            window.livewire.start();
+
+            started = true;
+        }
+    });
+</script>
+
+
+
+
+<script>
+
+    // $("#mySelect").change(function() {
+    //     const selectedValues = $(this).val();
+    //     $(selectedValues).each(function() {
+    //         $("#" + this).show();
+    //     });
+    // });
+
+    // // Add event listener for removing li elements
+    // $(document).on("click", ".remove-option", function(e) {
+    //     const liElement = $(this).closest("li");
+    //     const liId = liElement.attr("id");
+
+    //     const hrefElement = $(this).closest("li a");
+    //     const hrefId = hrefElement.attr("href");
+
+    //     // Show Swal.fire alert before removing
+    //     Swal.fire({
+    //         title: 'Are you sure?',
+    //         text: "You won't be able to revert this!",
+    //         icon: 'warning',
+    //         showCancelButton: true,
+    //         confirmButtonColor: '#3085d6',
+    //         cancelButtonColor: '#d33',
+    //         confirmButtonText: 'Yes, remove it!'
+    //     }).then((result) => {
+    //         if (result.isConfirmed) {
+    //             let coapplicant_no = 0
+    //             let lead_id= 30263765
+    //             let url = 'https://salescrm.ummeedhfc.com/credit-analysis-new/delete-income-grid';
+    //             $.ajax({
+    //                 headers: {
+    //                     'X-CSRF-TOKEN': "Gc4H49OWriAWG1x8kXVSqNts7FymW2nvxHYui0Vn",
+    //                 },
+    //                 type: 'GET',
+    //                 url: url,
+    //                 data:{'lead_id' : lead_id,'coapplicant_no' : coapplicant_no,'id':liId},
+    //                 success: function (response) {
+    //                     // Remove from selected options
+    //                     $("#mySelect option[value='" + liId + "']").prop("selected", false);
+    //                     $("#mySelect").trigger("change"); // Refresh select2
+
+    //                     // Remove the li element
+    //                     liElement.hide();
+    //                     $(hrefId).hide();
+    //                 }
+    //             });
+    //         }
+    //     });
+    // });
+
+    // $('#mySelect').on('select2:unselecting', function (e) {
+    //     // Get the ID of the removed value
+    //     e.preventDefault(); // Prevent default unselecting behavior
+    //     const removedValue = e.params.args.data.id;
+
+    //     // Show Swal.fire alert for confirmation
+    //     Swal.fire({
+    //         title: 'Are you sure?',
+    //         text: "You won't be able to revert this!",
+    //         icon: 'warning',
+    //         showCancelButton: true,
+    //         confirmButtonColor: '#3085d6',
+    //         cancelButtonColor: '#d33',
+    //         confirmButtonText: 'Yes, remove it!'
+    //     }).then((result) => {
+    //         if (result.isConfirmed) {
+    //             let coapplicant_no = 0
+    //             let lead_id= 30263765
+
+    //             let url = 'https://salescrm.ummeedhfc.com/credit-analysis-new/delete-income-grid';
+
+    //             $.ajax({
+    //                 headers: {
+    //                     'X-CSRF-TOKEN': "Gc4H49OWriAWG1x8kXVSqNts7FymW2nvxHYui0Vn",
+    //                 },
+    //                 type: 'GET',
+    //                 url: url,
+    //                 data:{'lead_id' : lead_id,'coapplicant_no' : coapplicant_no,'id':removedValue},
+    //                 success: function (response) {
+    //                     // Remove the option from the select box directly
+    //                     $('#mySelect option[value="' + removedValue + '"]').prop("selected", false);
+
+    //                     // Trigger the change event to notify Select2 of the update
+    //                     $('#mySelect').trigger('change');
+    //                     $("#" + removedValue).hide();
+    //                     const hrefId = $("#" + removedValue).closest("li");
+
+    //                     // Find the anchor tag within the li
+    //                     const anchorTag = hrefId.find("a");
+
+    //                     // Extract the href attribute value
+    //                     const hrefValue = anchorTag.attr("href");
+
+    //                     console.log("Anchor tag href:", hrefValue);
+    //                 }
+    //             });
+    //         }
+    //     });
+    // });
+
+
+    $(document).ready(function() {
+        $('.income-grid-checkbox').click(function() {
+            var checkedCount = $('.income-grid-checkbox:checked').length;
+            if (checkedCount == 5) {
+                // $(this).prop('checked', false);
+                // alert('You can only select a maximum of 5 income.');
+                $('.income-grid-checkbox:not(:checked)').prop('disabled', checkedCount === 5);
+            } else {
+                $('.income-grid-checkbox:not(:checked)').prop('disabled', checkedCount === 5);
+            }
+        });
+
+        
+        $(".new_branch").change(function() {
+            if ($(this).val() != '') {
+                if (confirm('Are you sure want to change branch?')) {
+                    var lead_id = $(this).attr('data-lead_id');
+                    var draft_id = $(this).attr('data-draft_id');
+                    Livewire.emit('changeBranch', lead_id, draft_id, $(this).val())
+                } else {
+                    $(this).val('');
+                }
+            }
+        });
+    });
+
+
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get the dropdown element
+        const dropdown = document.querySelector('.menu-dropdown');
+        // Get the back button element
+        const backButton = document.querySelector('.back-button');
+
+        // Add event listener to the dropdown trigger
+        dropdown.addEventListener('click', function() {
+            // Toggle the 'z-removed' class on the dropdown
+            dropdown.classList.toggle('z-removed');
+            // Toggle the 'z-removed' class on the back button
+            backButton.classList.toggle('z-removed');
+        });
+
+        // Add event listener to the document to close the dropdown when clicked outside
+        document.addEventListener('click', function(event) {
+            if (!dropdown.contains(event.target)) {
+                dropdown.classList.remove('z-removed');
+                // backButton.classList.add('z-removed');
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    // Array of page paths where the div should be displayed
+    var segment = "credit-analysis-new";
+    var allowedPages = [
+      'full-deal-list',
+      'final-approved',
+      'dashboard',
+      'deal-list',
+      'financial-approved',
+      'tranche-home',
+    ];
+    if (allowedPages.includes(segment)) {
+      // Show the div element
+      document.getElementById('hide-on-data').style.display = 'block';
+    } else {
+      // Hide the div element for other pages
+      document.getElementById('hide-on-data').style.display = 'none';
+    }
+  </script>
+<script>
+
+    window.addEventListener('changeTabColor', event => {
+        $('#'+event.detail.tab_name).removeClass('validation_error');
+        $('#'+event.detail.tab_name).addClass('validation_success');
+    })
+
+    window.addEventListener('reloadValuation', event => {
+        Livewire.emit('loadValuation'); // Dispatch the event
+    })
+
+    window.addEventListener('reloadExpenses', event => {
+        Livewire.emit('loadExpenses'); // Dispatch the event
+    })
+
+    window.addEventListener('reloadCam', event => {
+        Livewire.emit('loadHeader'); // Dispatch the event
+    })
+
+    window.addEventListener('reloadHeader', event => {
+        Livewire.emit('loadHeader'); // Dispatch the event
+    })
+
+    window.addEventListener('closeManualDeviationModal', event => {
+        $("#kt_modal_upgrade_plan_1").modal('hide');
+    })
+
+    window.addEventListener('closeSanctionConditionModal', event => {
+        $("#kt_modal_upgrade_plan").modal('hide');
+    })
+
+    window.addEventListener('vmsRecommenderModal', event => {
+        $("#vms_deviation_tab_link").click();
+        document.getElementById('vms_deviation_tab_link').click();
+    })
+
+    window.addEventListener('vmsApproverModal', event => {
+        $("#vms_deviation_tab_link").click();
+        document.getElementById('vms_deviation_tab_link').click();
+    })
+
+    $(document).ready(function() {
+
+        $('.cursor-pointer').on('click', function() {
+            $('.primary-action').addClass('reduce-z-index');
+        });
+
+        $(document).on('click', function(event) {
+            if (!$(event.target).closest('.menu-dropdown').length) {
+                $('.primary-action').removeClass('reduce-z-index');
+            }
+        });
+
+        // for income template
+        const numberInputs = document.querySelectorAll('input[type="number"]');
+
+        numberInputs.forEach(input => {
+            input.addEventListener('keydown', (event) => {
+                // Only prevent default for "-", "+" keys, and max length:
+                if (input.value.length === 10 || event.key === "-" || event.key === "+") {
+                    if (event.key === "Tab" || event.key === "Backspace") {
+                        // Move focus to the next input field
+                        const nextInput = input.nextElementSibling;
+                        if (nextInput && nextInput.tagName === "INPUT") {
+                            nextInput.focus();
+                        }
+                    } else {
+                        event.preventDefault();
+                    }
+                }
+            });
+        });
+
+    });
+
+    $(document).on('click', '.reload_cases', function() {
+        Livewire.emit($(this).data('tab-name'));
+    });
+
+    function swapApplicant(applicantNo, applicantType) {
+        $('#first_member_select').val('');
+        $('#second_member_select').val('');
+
+        const firstMember = document.getElementById('first_member_select');
+        firstMember.value = applicantNo;
+
+        $('#first_member_label').html(applicantType);
+
+        // Call the update function manually
+        updateDisabledOptions();
+
+        $("#swap_applicant").modal('show');
+    };
+  </script>
+
+
+<script>
+    function updateDisabledOptions() {
+        const firstMember = document.getElementById('first_member_select');
+        const secondMember = document.getElementById('second_member_select');
+
+        const firstValue = firstMember.value;
+        const secondValue = secondMember.value;
+
+        [...firstMember.options].forEach(option => {
+            option.disabled = (option.value !== "" && option.value === secondValue);
+        });
+
+        [...secondMember.options].forEach(option => {
+            option.disabled = (option.value !== "" && option.value === firstValue);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const firstMember = document.getElementById('first_member_select');
+        const secondMember = document.getElementById('second_member_select');
+
+        firstMember.addEventListener('change', updateDisabledOptions);
+        secondMember.addEventListener('change', updateDisabledOptions);
+
+        updateDisabledOptions(); // Call initially in case of pre-filled values
+    });
+
+    function deleteCoApp(co_app_no) {
+        alert(co_app_no)
+    }
+</script><svg id="SvgjsSvg1001" width="2" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" style="overflow: hidden; top: -100%; left: -100%; position: absolute; opacity: 0;"><defs id="SvgjsDefs1002"></defs><polyline id="SvgjsPolyline1003" points="0,0"></polyline><path id="SvgjsPath1004" d="M0 0 "></path></svg></body><!--end::Body--></html>

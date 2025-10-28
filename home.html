@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web System | Rapid Ummeed</title>
+<style>
+  body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background-color: #e9f1f9;
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    padding: 10px 30px;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .header-left img {
+    height: 45px;
+  }
+
+  .header-left h1 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #333;
+  }
+
+  .user {
+    font-size: 0.9rem;
+    color: gray;
+  }
+
+  /* Main */
+  .main {
+    padding: 30px;
+  }
+
+  .main h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 25px;
+  }
+
+  /* Card grid */
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+  }
+
+  .card {
+    background-color: #fff;
+    width: 200px;
+    height: 150px;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  }
+
+  .card-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #007bff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .card-icon.orange { background-color: #f57c00; }
+  .card-icon.teal { background-color: #009688; }
+  .card-icon.brown { background-color: #8d6e63; }
+
+  .card h3 {
+    margin: 0;
+    font-size: 1rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-left">
+    <img src="C:\Users\UHF0445\OneDrive - Ummeed Housing Finance Private Limited\Desktop\Desktop 3\html_file\umeed-logo.png" alt="Logo">
+    <h1>Web System</h1>
+  </div>
+  <div class="user">admin</div>
+</div>
+
+<!-- Main -->
+<div class="main">
+  <h2>Home</h2>
+  <div class="card-container">
+    
+    
+    <a href="deal-list.html" class="card">
+      <div class="card-icon orange">
+        <img src="https://cdn-icons-png.flaticon.com/512/942/942748.png" width="25" alt="">
+      </div>
+      <h3>Smart Credit Report</h3>
+    </a>
+
+  </div>
+</div>
+
+</body>
+</html>

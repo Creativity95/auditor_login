@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Upload & Report</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      background: #f4f7fb;
+      color: #333;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 30px;
+      background: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    header img {
+      height: 40px;
+    }
+    .top-info {
+      display: flex;
+      gap: 30px;
+      font-size: 14px;
+    }
+    .top-info div span {
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      background: white;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      padding: 10px 20px;
+      overflow-x: auto;
+    }
+    nav a {
+      margin-right: 20px;
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+    }
+    nav a.active {
+      color: #0066cc;
+      border-bottom: 3px solid #0066cc;
+      padding-bottom: 5px;
+    }
+
+    .container {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+    }
+    .column {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      flex: 1;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .column h3 {
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      color: #444;
+    }
+
+    .doc-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 10px;
+      background: #f9fafc;
+      border-radius: 6px;
+      border: 1px solid #eee;
+    }
+
+    .doc-item .name {
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .doc-item .date {
+      font-size: 12px;
+      color: #888;
+    }
+
+    .btns {
+      display: flex;
+      gap: 8px;
+    }
+    .btn {
+      width: 28px;
+      height: 28px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .btn.download {
+      background-color: #4CAF50;
+    }
+    .btn.view {
+      background-color: #1e40af;
+    }
+    .btn i {
+      color: white;
+      font-size: 14px;
+    }
+    .highlight {
+  color: red;
+  font-weight: 600;
+}
+
+
+    /* Document List (right column) */
+    .doc-list-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+    }
+    .doc-list-item span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .doc-list-item span::before {
+      content: "📄";
+    }
+    .back-btn {
+      display: inline-block;
+      margin: 20px;
+      padding: 8px 16px;
+      background: #003399;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="C:\Users\UHF0445\OneDrive - Ummeed Housing Finance Private Limited\Desktop\Desktop 3\html_file\umeed-logo.png" alt="Rapid UMMEED Logo">
+    <div class="top-info">
+      <div>Lead Number: <span>00149960</span></div>
+      <div>Branch: <span>JANAKPURI</span></div>
+      <div>Loan Amount: <span>₹4,000,000</span></div>
+      <div>Final Rate: <span>12.25%</span></div>
+      <div>Tenure: <span>240 Months</span></div>
+    </div>
+  </header>
+
+  <nav>
+    <a href="all_tabs.html">Personal Details</a>
+    <a href="document_upload_report.html" class="active">Document Upload & Report</a>
+    
+    <a href="#">PD Observation</a>
+    <a href="#">Income Assessment</a>
+    <a href="#">Cash Flow</a>
+    <a href="#">CAM</a>
+    <a href="#">Deviations</a>
+    
+  </nav>
+
+  <div class="container">
+    <!-- Column 1 -->
+    <div class="column">
+      <h3>Output & Other Reports</h3>
+      <div class="doc-item">
+        <div>
+           IMD Receipt - <span class="highlight">to be hide for auditor</span>
+          <div class="date">13-10-2025 14:26:06</div>
+        </div>
+        <div class="btns">
+          <button class="btn download"></button>
+          <button class="btn view"></button>
+        </div>
+      </div>
+      <div class="doc-item">
+        <div>
+          <div class="name">Application Form - <span class="highlight">to be hide for auditor</span></div>
+          <div class="date">13-10-2025 17:36:45</div>
+        </div>
+        <div class="btns">
+          <button class="btn download"></button>
+          <button class="btn view"></button>
+        </div>
+      </div>
+      <div class="doc-item">
+        <div>
+          <div class="name">Final CAM - <span class="highlight">to be hide for auditor</span></div>
+          <div class="date">27-10-2025 12:39:30</div>
+        </div>
+        <div class="btns">
+          <button class="btn download"></button>
+          <button class="btn view"></button>
+        </div>
+      </div>
+      <div class="doc-item">
+        <div>
+          <div class="name">Short Summary Report - <span class="highlight">to be hide for auditor</span></div>
+          <div class="date">01-01-1970 05:30:00</div>
+        </div>
+        <div class="btns">
+          <button class="btn download"></button>
+          <button class="btn view"></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Column 2 -->
+    <div class="column">
+      <h3>3rd Party Reports & Other Documents</h3>
+      <div class="doc-item">
+        <div>
+          <div class="name">Dedupe Report - <span class="highlight">to be hide for auditor</span></div>
+          <div class="date">13-10-2025 14:26:08</div>
+        </div>
+        <div class="btns">
+          <button class="btn download"></button>
+          <button class="btn view"></button>
+        </div>
+      </div>
+      <div class="doc-item">
+        <div>
+          <div class="name">Cibil Report</div>
+          <div class="date">13-10-2025 17:34:49</div>
+        </div>
+        <div class="btns">
+          <button class="btn download"></button>
+          <button class="btn view"></button>
+        </div>
+      </div>
+      <div class="doc-item">
+        <div>
+          <div class="name">Crif Report</div>
+          <div class="date">13-10-2025 17:35:06</div>
+        </div>
+        <div class="btns">
+          <button class="btn download"></button>
+          <button class="btn view"></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Column 3 -->
+    <div class="column">
+      <h3>Documents List</h3>
+      <div class="doc-list-item"><span>Technical Report</span></div>
+      <div class="doc-list-item"><span>Legal Report</span></div>
+      <div class="doc-list-item"><span>ID Proof</span><span class="highlight">to be hide for auditor</span></div>
+      <div class="doc-list-item"><span>Proof of Address</span><span class="highlight">to be hide for auditor</span></div>
+      <div class="doc-list-item"><span>IMD</span><span class="highlight">to be hide for auditor</span></div>
+      <div class="doc-list-item"><span>Banking</span><span class="highlight">to be hide for auditor</span></div>
+      <div class="doc-list-item"><span>Income Document</span><span class="highlight">to be hide for auditor</span></div>
+      <div class="doc-list-item"><span>Customer Intent Form</span><span class="highlight">to be hide for auditor</span></div>
+      <div class="doc-list-item"><span>Customer Photograph</span><span class="highlight">to be hide for auditor</span></div>
+      <div class="doc-list-item"><span>Signature Proof</span><span class="highlight">to be hide for auditor</span></div>
+      <div class="doc-list-item"><span>Property Papers</span><span class="highlight">to be hide for auditor</span></div>
+      <div class="doc-list-item"><span>FORM 60</span><span class="highlight">to be hide for auditor</span></div>
+      <div class="doc-list-item"><span>Supporting Documents</span><span class="highlight">to be hide for auditor</span></div>
+    </div>
+  </div>
+
+  <a href="all_tabs.html" class="back-btn">Back</a>
+</body>
+</html>

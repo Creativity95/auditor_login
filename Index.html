@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | Rapid Ummeed</title>
+<style>
+  body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background-color: #f9f9f9;
+  }
+
+  .container {
+    display: flex;
+    height: 100vh;
+  }
+
+  /* Left section */
+  .left-panel {
+    background-color: #e9effd;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    color: #333;
+    text-align: center;
+  }
+
+  .left-panel img {
+    width: 200px;
+    margin-bottom: 20px;
+  }
+
+  .left-panel h2 {
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+  }
+
+  .left-panel p {
+    line-height: 1.6;
+    max-width: 400px;
+  }
+
+  .illustration {
+    margin-top: 30px;
+    width: 250px;
+  }
+
+  /* Right section */
+  .right-panel {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .login-box {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .login-box label {
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+
+  .login-box input {
+    height: 38px;
+    border: none;
+    background-color: #f0f5ff;
+    border-radius: 5px;
+    padding: 0 10px;
+    margin-bottom: 15px;
+    font-size: 14px;
+  }
+
+  .forgot {
+    text-align: right;
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .forgot a {
+    color: #007bff;
+    text-decoration: none;
+  }
+
+  .login-btn {
+    background-color: #ffb400;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  .login-btn:hover {
+    background-color: #e09b00;
+  }
+
+  @media (max-width: 900px) {
+    .container {
+      flex-direction: column;
+    }
+    .left-panel {
+      flex: none;
+      height: auto;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Left section -->
+  <div class="left-panel">
+    <img src="C:\Users\UHF0445\OneDrive - Ummeed Housing Finance Private Limited\Desktop\Desktop 3\html_file\umeed-logo.png" alt="Rapid Ummeed Logo">
+    <h2>Welcome to Smart Panel</h2>
+    <p>
+      Mobile app based solution that helps the loan officers<br>
+      to easily manage their leads, qualify them and<br>
+      quickly onboard the potential customer
+    </p>
+  </div>
+
+  <!-- Right section -->
+  <div class="right-panel">
+    <div class="login-box">
+      <label for="employeeId">Employee ID</label>
+      <input type="text" id="employeeId" placeholder="Enter Employee ID" value="UMEED092">
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter Password" value="********">
+
+      <div class="forgot">
+        <a href="#">Forgot Password?</a>
+      </div>
+
+      <button class="login-btn" onclick="window.location.href='home.html'">Login</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

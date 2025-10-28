@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complete Deal List | Smart Credit</title>
+<style>
+  body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    background: #f2f7fd;
+    color: #333;
+  }
+
+  /* Header Bar */
+  header {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 30px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+
+  header h1 {
+    font-size: 1.2rem;
+    color: #333;
+  }
+
+  .user-icon {
+    width: 38px;
+    height: 38px;
+    background: #f1b900;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  /* Main */
+  .container {
+    padding: 30px;
+  }
+
+  .container h2 {
+    margin-bottom: 15px;
+  }
+
+  /* Filter bar */
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .filter-bar input,
+  .filter-bar select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    min-width: 180px;
+    font-size: 14px;
+  }
+
+  .filter-bar button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    color: white;
+  }
+
+  .reset-btn {
+    background: #0d6efd;
+  }
+
+  .export-btn {
+    background: #1abc9c;
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 14px;
+  }
+
+  th, td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+  }
+
+  th {
+    background: #f6f8fa;
+    font-weight: 600;
+  }
+
+  tr:hover {
+    background: #f9fbff;
+  }
+
+  .status {
+    background: #ffcc00;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #000;
+    display: inline-block;
+  }
+
+  .action-btn {
+    border: none;
+    background: #0d6efd;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+
+  .change-branch {
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .pagination span {
+    background: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+  }
+
+  .pagination .active {
+    background: #007bff;
+    color: #fff;
+    border-color: #007bff;
+  }
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Complete Deal List</h1>
+  <div class="user-icon">A</div>
+</header>
+
+<div class="container">
+  <h2>Home - Smart Credit</h2>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar">
+    <input type="text" placeholder="Search Customers">
+    <input type="text" placeholder="Search Lead No">
+    <input type="text" placeholder="Search Loan Amount">
+    <input type="text" placeholder="Search G Code">
+    <select>
+      <option>Select Product</option>
+    </select>
+    <select>
+      <option>Select Decision</option>
+    </select>
+    <select>
+      <option>Select Branch</option>
+    </select>
+    <button class="reset-btn">Reset</button>
+    <button class="export-btn">Export</button>
+  </div>
+
+  <!-- Deal List Table -->
+  <table>
+    <thead>
+      <tr>
+        <th>Lead No</th>
+        <th>Product</th>
+        <th>Name</th>
+        <th>Branch</th>
+        <th>Loan Amount</th>
+        <th>Loan ID</th>
+        <th>Stage</th>
+        <th>File Type</th>
+        <th>Status</th>
+        <th>Query Count</th>
+        <th>Last Decision Taken By</th>
+        <th>Assigned To</th>
+        <th>Updated Date</th>
+        <th>Change Branch</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>00147942</td>
+        <td>Loan Against Property</td>
+        <td>Shyam Lal</td>
+        <td>Taranagar</td>
+        <td>₹700000</td>
+        <td>-</td>
+        <td>Final</td>
+        <td>Financial</td>
+        <td><span class="status">Financial Approved</span></td>
+        <td>-</td>
+        <td>Harshit Tambi</td>
+        <td>Lokesh Yadav</td>
+        <td>27-10-2025</td>
+        <td><button class="change-branch">Change Branch</button></td>
+        <td><button class="action-btn"  onclick="window.location.href='all_tabs.html'">Reassign</button></td>
+      </tr>
+         </tbody>
+  </table>
+
+  
+</div>
+
+</body>
+</html>
