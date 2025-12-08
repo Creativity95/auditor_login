@@ -2326,10 +2326,7 @@
                                                     </div>
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="   ">Number of Asset</label>
-                            <input type="text" class="form-control" placeholder="0" wire:model.defer="number_of_asset">
-                                                    </div>
+                        
                         <!--end::Col-->
                         <!--begin::Col-->
                         <div class="col-md-3 mb-9">
@@ -2338,10 +2335,7 @@
                                                     </div>
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="">Insurance Premium</label>
-                            <input type="text" class="form-control" placeholder="0" wire:model.lazy="insurance_premium" wire:change.lazy="calculateRequestedLoanAmountWithInsurance" readonly="">
-                                                    </div>
+                        
                         <!--end::Col-->
                         <!--begin::Col-->
                         <div class="col-md-3 mb-9">
@@ -2356,10 +2350,7 @@
                                                     </div>
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="   ">Tenure (In Days)</label>
-                            <input type="text" class=" form-control" placeholder="0" readonly="" wire:model.defer="loan_tenure_day">
-                        </div>
+                      
                         <!--end::Col-->
                         <!--begin::Col-->
                         <div class="col-md-3 mb-9">
@@ -2384,23 +2375,7 @@
                                                             </select>
                                                     </div>
 
-                        <div class="col-md-3 mb-9">
-                            <label class="required">HL Bonanza</label>
-                            <div class="d-flex">
-                                <div class="form-check form-check-custom form-check-solid form-check-sm radio-btn">
-                                    <input class="form-check-input" name="hl_bonanza" type="radio" wire:model.defer="hl_bonanza" value="Yes" id="flexRadioDefault2HL">
-                                    <label class="form-check-label m-0" for="flexRadioDefault2HL">Yes</label>
-                                </div>
-
-                                
-                                <div class="form-check form-check-custom form-check-solid ms-2 form-check-sm radio-btn ms-3">
-                                    <input class="form-check-input" name="hl_bonanza" type="radio" wire:model.defer="hl_bonanza" value="No" id="flexRadioDefault3HL">
-                                    <label class="form-check-label m-0" for="flexRadioDefault3HL">No</label>
-                                </div>
-
-                            </div>
-
-                                                    </div>
+                        
                         <!--end::Col-->
                         <!--begin::Col-->
 
@@ -2416,70 +2391,25 @@
 
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="required    ">Margin %</label>
-                            <input type="text" class=" form-control" placeholder="0" readonly="" wire:model.defer="margin_per">
-                        </div>
+                        
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="required    ">Margin Amount</label>
-                            <input type="text" class=" form-control" placeholder="0" readonly="" wire:model.defer="margin_amount">
-                        </div>
+                        
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="required ">Rate Type </label>
-                            <div class="fw-bolder fs-6">
-                                <select id="rate-type" class="form-select" wire:model.defer="rate_type">
-                                    <option value="">Select</option>
-                                    <option value="Flat">Flat</option>
-                                    <option value="Effective">Effective</option>
-                                </select>
-                            </div>
-
-                                                    </div>
+                        
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="required">Rate Method</label>
-                            <div class="fw-bolder fs-6">
-                                
-                                    <div class="d-flex">
-                                        <div class="form-check form-check-custom form-check-solid form-check-sm radio-btn">
-                                            <input class="form-check-input" name="rate_method" type="radio" wire:model.defer="rate_method" value="Fixed" id="flexRadioDefault2">
-                                            <label class="form-check-label m-0" for="flexRadioDefault2">Fixed</label>
-                                        </div>
-
-                                    
-                                        <div class="form-check form-check-custom form-check-solid ms-2 form-check-sm radio-btn ms-3">
-                                            <input class="form-check-input" name="rate_method" type="radio" wire:model.defer="rate_method" value="Floating" id="flexRadioDefault3">
-                                            <label class="form-check-label m-0" for="flexRadioDefault3">Floating</label>
-                                        </div>
-
-                                    </div>
-                                
-                            </div>
-
-                                                    </div>
+                                                    
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="   ">Fixed period(in Months)</label>
-                            <input type="text" class="form-control" placeholder="0" wire:model.defer="fixed_period">
-                        </div>
+                        
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="required    ">Base Rate Type</label>
-                            <input type="required text" class=" form-control" placeholder="" readonly="" wire:model.defer="base_rate_type">
-                        </div>
+                       
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="required    ">URR</label>
-                            <input type="text" class=" form-control" placeholder="" readonly="" wire:model.defer="urr">
-                        </div>
+                       
                         <!--end::Col-->
                         <!--begin::Col-->
                         <div class="col-md-3 mb-9">
@@ -2488,10 +2418,7 @@
                                                     </div>
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="   ">Mark up</label>
-                            <input type="text" class=" form-control" placeholder="" readonly="" wire:model.defer="markup">
-                        </div>
+                        
                         <!--end::Col-->
                         <!--begin::Col-->
                         <div class="col-md-3 mb-9">
@@ -2514,17 +2441,7 @@
                                                     </div>
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="required">Disbursal schedule</label>
-                            <div class="fw-bolder fs-6">
-                                <select id="rate-type" class="form-select" wire:model.defer="disbursal_schedule">
-                                    <option value="">Select</option>
-                                    <option value="Fully-Disbursal">Fully-Disbursal</option>
-                                    <option value="Partial Disbursal">Partial Disbursal</option>
-                                </select>
-                            </div>
-
-                                                    </div>
+               
                         <!--end::Col-->
                         <!--begin::Col-->
                         <div class="col-md-3 mb-9">
@@ -2533,20 +2450,7 @@
                         </div>
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="required">Interest Compounding Frequency</label>
-                            <div class="fw-bolder fs-6">
-                                <select id="rate-type" class="form-select" wire:model.defer="installment_compounding_mode">
-                                    <option value="">Select</option>
-                                                                            <option value="Na/Monthly">Na/Monthly</option>
-                                                                            <option value="Bimonthly">Bimonthly</option>
-                                                                            <option value="Quaterly">Quaterly</option>
-                                                                            <option value="Half Yearly">Half Yearly</option>
-                                                                            <option value="Yearly">Yearly</option>
-                                                                    </select>
-                            </div>
-
-                                                    </div>
+                       
                         <!--end::Col-->
                         <!--begin::Col-->
                         <div class="col-md-3 mb-9">
@@ -2565,26 +2469,9 @@
                                                     </div>
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="required">Interest Frequency</label>
-                            <div class="fw-bolder fs-6">
-                                <select id="rate-type" class="form-select" wire:model.defer="interest_frequency">
-                                    <option value="">Select</option>
-                                    <option value="Monthly">Monthly</option>
-                                    <option value="Bimonthly">Bimonthly</option>
-                                    <option value="Quaterly">Quaterly</option>
-                                    <option value="Half Yearly">Half Yearly</option>
-                                    <option value="Yearly">Yearly</option>
-                                </select>
-                            </div>
-
-                                                    </div>
-                        <!--end::Col-->
+                        
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="   ">Number Of Installment</label>
-                            <input type="text" class="form-control" placeholder="0" wire:model.defer="no_of_installment" readonly="">
-                                                    </div>
+                        
                         <!--end::Col-->
                         <!--begin::Col-->
                         <div class="col-md-3 mb-9 ">
@@ -2609,10 +2496,7 @@
                                                     </div>
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9 ">
-                            <label class="   ">Number Of Advance Installment</label>
-                            <input type="text" class="form-control" placeholder="0" wire:model.defer="no_of_advance_installment" readonly="">
-                        </div>
+                        
                         <!--end::Col-->
                         <!--begin::Col-->
                         <div class="col-md-3 mb-9">
@@ -2669,24 +2553,7 @@
                                                     </div>
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="required">NHB Category</label>
-                            <div class="fw-bolder fs-6">
-                                <select id="rate-type" class="form-select" wire:model.defer="nhb_category">
-                                    <option value="">Select</option>
-                                    <option value="Builder Loan - Others">Builder Loan - Others</option>
-                                    <option value="Housing Loans To Individuals For Construction/purchase Of New Units">Housing Loans To Individuals For Construction/purchase Of New Units</option>
-                                    <option value="Loans For Purchasing Old Units (Resale)">Loans For Purchasing Old Units (Resale)</option>
-                                    <option value="Loans For Repair &amp; Rennovation Of Existing Units">Loans For Repair &amp; Rennovation Of Existing Units</option>
-                                    <option value="For Mortgage/property/home Equity Loans">For Mortgage/property/home Equity Loans</option>
-                                    <option value="Builder Loan">Builder Loan</option>
-                                    <option value="Builder Loans - Residential Projects">Builder Loans - Residential Projects</option>
-                                    <option value="Builder Loans - Non-residential Projects">Builder Loans - Non-residential Projects</option>
-                                </select>
-                            </div>
-
-                                                    </div>
-                        <!--end::Col-->
+                                                <!--end::Col-->
                         <!--begin::Col-->
                         <div class="col-md-3 mb-9">
                             <label class=" ">Loan Classification</label>
@@ -2754,188 +2621,7 @@
                         </div>
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="required    ">Risk Category Parameter</label>
-
-                            <select class="form-select form-select-sm" wire:change="changeRiskCategory()" wire:model.defer="risk_category_parameter">
-                                <option value="">Select</option>
-                                                                    <option value="1">Travel agency</option>
-                                                                    <option value="2">Production or trade in any product or activity deemed illegal under host country laws or regulations or international conventions and agreements, or subject to international bans, such as pharmaceuticals, pesticides/herbicides, ozone depleting substances, PCB, wildlife or products regulated under CITES.</option>
-                                                                    <option value="3">FruitÂ&nbsp; and Vegetable -Traders</option>
-                                                                    <option value="4">FruitÂ&nbsp; and Vegetable -vendors suppliers</option>
-                                                                    <option value="5">Gems and Jewellery-Gold smith (Job work)</option>
-                                                                    <option value="6">Gems and Jewellery-retailer</option>
-                                                                    <option value="7">Gems and Jewellery-employees</option>
-                                                                    <option value="8">Glass and fibre-Traders</option>
-                                                                    <option value="9">Glass and fibre-supplier</option>
-                                                                    <option value="10">Glass and fibre-Employees</option>
-                                                                    <option value="11">Health related -Medical</option>
-                                                                    <option value="12">Health related -hospital</option>
-                                                                    <option value="13">Health related -doctor</option>
-                                                                    <option value="14">Health related -clinic</option>
-                                                                    <option value="15">Health related -labs</option>
-                                                                    <option value="16">Health related -nurses</option>
-                                                                    <option value="17">Health related -saloon</option>
-                                                                    <option value="18">Health related -beauty parlour</option>
-                                                                    <option value="19">Iron and Fabrication -Steel trader and supplier</option>
-                                                                    <option value="20">Iron and Fabrication -fabricator, and job workers</option>
-                                                                    <option value="21">IT Services-Employees and IT firms</option>
-                                                                    <option value="22">Music and event-DJ</option>
-                                                                    <option value="23">Agriculture-AgriÂ&nbsp;relatedÂ&nbsp;services</option>
-                                                                    <option value="24">Music and event-band</option>
-                                                                    <option value="25">Music and event-live singer</option>
-                                                                    <option value="26">Paper and plastic-Trader</option>
-                                                                    <option value="27">Paper and plastic-supplier</option>
-                                                                    <option value="28">Paper and plastic-manufacturer of corrugated boxes</option>
-                                                                    <option value="29">Ply and wood-Trader</option>
-                                                                    <option value="30">Ply and wood-suppler</option>
-                                                                    <option value="31">Ply and wood-sawmill</option>
-                                                                    <option value="32">Ply and wood-furniture showroom</option>
-                                                                    <option value="33">Shoe and lather/ Sport-Footwear traders and manufacturer</option>
-                                                                    <option value="34">Agriculture-pesticide</option>
-                                                                    <option value="35">Shoe and lather/ Sport-Sport good manufacture</option>
-                                                                    <option value="36">Telecom-Mobile -trader and supplier</option>
-                                                                    <option value="37">Telecom-repairing shops</option>
-                                                                    <option value="38">Telecom-IM cards</option>
-                                                                    <option value="39">Chemical-Trader Supplier Employees</option>
-                                                                    <option value="40">Logistic-Movers and packers</option>
-                                                                    <option value="41">Logistic-Courier Employees</option>
-                                                                    <option value="42">Other-Cash salary profile/Â&nbsp; Astrologer</option>
-                                                                    <option value="43">Other-Pandit</option>
-                                                                    <option value="44">Other-Padrai</option>
-                                                                    <option value="45">Agriculture-poultry</option>
-                                                                    <option value="46">Other-Granthi/ Hari saloon/Beauty ParlourÂ&nbsp; &amp; Â&nbsp;ANY OTHER</option>
-                                                                    <option value="47">Automobile-Auto dealers and employees at dealer Shop</option>
-                                                                    <option value="48">Banking and Finance-Formal bank salaried</option>
-                                                                    <option value="49">Essential Services-Tailor</option>
-                                                                    <option value="50">Essential Services-boutique</option>
-                                                                    <option value="51">Essential Services-Guard</option>
-                                                                    <option value="52">Essential Services-MC employees</option>
-                                                                    <option value="53">Essential Services-office boy</option>
-                                                                    <option value="54">Essential Services-maid</option>
-                                                                    <option value="55">Essential Services-domestic help</option>
-                                                                    <option value="56">Essential Services-electrician</option>
-                                                                    <option value="57">Essential Services-AC repair</option>
-                                                                    <option value="58">Essential Services-dry cleaning</option>
-                                                                    <option value="59">Essential Services-flour mill</option>
-                                                                    <option value="60">Essential Services-E Mitra</option>
-                                                                    <option value="61">Essential Services-petrol pump</option>
-                                                                    <option value="62">Essential Services-LPG</option>
-                                                                    <option value="63">Essential Services-Paint</option>
-                                                                    <option value="64">Essential Services-painter</option>
-                                                                    <option value="65">Essential Services-tent</option>
-                                                                    <option value="66">Essential Services-scrap dealer</option>
-                                                                    <option value="67">Essential Services-photography</option>
-                                                                    <option value="68">Essential Services-DTH</option>
-                                                                    <option value="69">Essential Services-Gardener</option>
-                                                                    <option value="70">Essential Services-crockery</option>
-                                                                    <option value="71">Essential Services-toys and gift shop</option>
-                                                                    <option value="72">Essential Services-Scrap business</option>
-                                                                    <option value="73">Essential Services-service centres of TW and Four wheelers</option>
-                                                                    <option value="74">Essential Services-auto part traders</option>
-                                                                    <option value="75">Essential Services-mechanic</option>
-                                                                    <option value="76">Building Material-Cement sand bricksÂ&nbsp;shuttering</option>
-                                                                    <option value="77">Building Material-sanitary hardware</option>
-                                                                    <option value="78">Auto and Cab service-Auto Driver</option>
-                                                                    <option value="79">Auto and Cab service-cab driver and owners</option>
-                                                                    <option value="80">Contractor-Building contractor</option>
-                                                                    <option value="81">Contractor-labour contractor</option>
-                                                                    <option value="82">Contractor-govt contractor</option>
-                                                                    <option value="83">Consultant-CA firm, CS//Cost accountant BPOs</option>
-                                                                    <option value="84">Consultant-KPOs</option>
-                                                                    <option value="85">Consultant- Architect</option>
-                                                                    <option value="86">Consultant-Practicing Income tax Accountants</option>
-                                                                    <option value="87">Electric and electronic-Chemist/Kirana/Trader of electrical and electronic goods</option>
-                                                                    <option value="88">Electric and electronic-employees Bank.</option>
-                                                                    <option value="89">Engineering Works-Lathe work</option>
-                                                                    <option value="90">Engineering Works-manufacturer of small parts</option>
-                                                                    <option value="91">Engineering Works-workers -Bank.</option>
-                                                                    <option value="92">Dairy</option>
-                                                                    <option value="93">Dairy-milk aggregator</option>
-                                                                    <option value="94">Dairy-traders</option>
-                                                                    <option value="95">Dairy-animal feed</option>
-                                                                    <option value="96">Dairy-fodder</option>
-                                                                    <option value="97">Restrictive - Negative profiie -Advocates below the level of High/Supreme court.</option>
-                                                                    <option value="98">Restrictive - Negative profiie -Police personnel below the level of SHO/Inspector.</option>
-                                                                    <option value="99">Restrictive - Negative profiie -Politicians and persons with political influence</option>
-                                                                    <option value="100">Restrictive - Negative profiie -Press and TV Reporters, Journalists.</option>
-                                                                    <option value="101">Restrictive - Negative profiie -Daily wage labourers / casual labourers / contractual employees.</option>
-                                                                    <option value="102">Restrictive - Negative profiie -HUF (property cannot be in the name of HUF, but income can be considered)</option>
-                                                                    <option value="103">Restrictive - Negative profiie -Employees of BIFR companies</option>
-                                                                    <option value="104">Restrictive - Negative profiie -Mine and quarry workers</option>
-                                                                    <option value="105">Restrictive - Negative profiie -Media- Film/ TV Industry / Cable Operator</option>
-                                                                    <option value="106">Restrictive - Negative profiie - Building material suppliers</option>
-                                                                    <option value="107">Restrictive - Negative profiie -Bar Owners and workers.</option>
-                                                                    <option value="108">Restrictive - Negative profiie - Security Services - Companies and their Employees</option>
-                                                                    <option value="109">Restrictive - Negative profiie -Real estate agents/ Builders and their relatives</option>
-                                                                    <option value="110">Restrictive - Negative profiie -RTO brokers / Owner of Motor Driving Training School and Its Employee.</option>
-                                                                    <option value="111">Restrictive - Negative profiie - Watchmen</option>
-                                                                    <option value="112">Restrictive - Negative profiie -Time share companies and related persons // Plantation</option>
-                                                                    <option value="113">Garment-Manufacturer</option>
-                                                                    <option value="114">Garment-Trader</option>
-                                                                    <option value="115">Garment-supplier ( and their employees)</option>
-                                                                    <option value="116">Export-Exporter and importer of all kinds of goods</option>
-                                                                    <option value="117">Export-Employees</option>
-                                                                    <option value="118">Tours and travel-Taxi owners</option>
-                                                                    <option value="119">Tours and travel- tour agencies</option>
-                                                                    <option value="120">Tours and travel-employees</option>
-                                                                    <option value="121">Transport-Truck owner</option>
-                                                                    <option value="122">Transport-truck drivers and trans porters</option>
-                                                                    <option value="123">Kirana stores employees distributor suppliers of FMCG</option>
-                                                                    <option value="124">Hotel and restaurants-Dhaba</option>
-                                                                    <option value="125">Hotel and restaurants-small food joints (temporary setup),</option>
-                                                                    <option value="126">Hotel and restaurants-tea stall</option>
-                                                                    <option value="127">Hotel and restaurants-restaurants</option>
-                                                                    <option value="128">Hotel and restaurants-Highway Dhaba</option>
-                                                                    <option value="129">Hotel and restaurants-Hotels</option>
-                                                                    <option value="130">Hotel and restaurants-Employees - Cash/Bank.</option>
-                                                                    <option value="131">Education-Schools coaching classes teachers stationery items.</option>
-                                                                    <option value="132">Anti-Social organizations and elements.</option>
-                                                                    <option value="133">Media- Film/ TV Industry</option>
-                                                                    <option value="134">Police personnel below the level of SHO/Inspector.</option>
-                                                                    <option value="135">Mine and quarry workers</option>
-                                                                    <option value="136">Customers with dubious reputation as per public information available or commercially available watch lists</option>
-                                                                    <option value="137">Advocates below the level of High/Supreme court.</option>
-                                                                    <option value="138">Non-resident customers,</option>
-                                                                    <option value="139">Jewelers and Bullion Dealers;</option>
-                                                                    <option value="140">Dealers in high value or precious goods (e.g. gem and precious metals dealers, art and antique dealers and auction houses, estate agents and real estate brokers);</option>
-                                                                    <option value="141">Watchmen</option>
-                                                                    <option value="142">Building material suppliers</option>
-                                                                    <option value="143">Customers engaged in a business which is associated with higher levels of corruption (e.g., arms manufacturers, dealers and intermediaries);</option>
-                                                                    <option value="144">Individuals and entities in various United Nations Security Council Resolutions (UNSCRs) such as UN 1267 etc.</option>
-                                                                    <option value="145">People in money lending, small time chit companies ,time share, lottery plantation business and their employees</option>
-                                                                    <option value="146">Import / Export;</option>
-                                                                    <option value="147">Time share companies and related persons</option>
-                                                                    <option value="148">HUF ( property cannot be in the name of HUF but income can be considered)</option>
-                                                                    <option value="149">Security Services - Employees</option>
-                                                                    <option value="150">Telemarketers;</option>
-                                                                    <option value="151">Loan Amount greater than 50 lakhs</option>
-                                                                    <option value="152">Companies having close family shareholding or beneficial ownership,</option>
-                                                                    <option value="153">Car / Boat / Plane Dealership;</option>
-                                                                    <option value="154">All other Individuals</option>
-                                                                    <option value="155">Production or trade in weapons and munitions.</option>
-                                                                    <option value="156">Individuals or entities listed in the schedule to the order under section 51A of the Unlawful Activities (Prevention) Act, 1967 relating to the purposes of prevention of, and for coping with terrorist activities</option>
-                                                                    <option value="157">High net worth individuals with Investible surplus of over Rs. 1 crore,</option>
-                                                                    <option value="158">Gambling/gaming including â€œJunket Operatorsâ€ arranging gambling tours;</option>
-                                                                    <option value="159">Real estate agents/ Builders and their relatives</option>
-                                                                    <option value="160">Drivers &amp; Conductors of buses/ Commercial Vehicles Drivers..PRIVATE</option>
-                                                                    <option value="161">Politically exposed persons (PEPs) (Individuals who are or have been entrusted with prominent public functions) e.g., Heads of States/Governments, senior politicians, senior government/ judicial/military officers, senior executives of state-owned corporations, important political party officials etc., and</option>
-                                                                    <option value="162">Gambling, casinos and equivalent enterprises.</option>
-                                                                    <option value="163">Security Services - Companies</option>
-                                                                    <option value="164">Daily wage labourers / casual labourers / contractual employees.</option>
-                                                                    <option value="165">Non-face to face customers, if any.</option>
-                                                                    <option value="166">Bar Owners and workers.</option>
-                                                                    <option value="167">Employees of BIFR companies</option>
-                                                                    <option value="168">Individuals and entities specifically identified by National Housing Bank (NHB), Financial Intelligence Unit (FIU) and other competent authorities as high-risk</option>
-                                                                    <option value="169">Gas Station;</option>
-                                                                    <option value="170">Firms with sleeping partners</option>
-                                                                    <option value="171">Press and TV Reporters, Journalists.</option>
-                                                                    <option value="172">Production or trade in alcoholic beverages (excluding beer and wine).</option>
-                                                                    <option value="173">RTO brokers</option>
-                                                                    <option value="174">Trusts, charities, NGOs and organizations receiving donations,</option>
-                                                                    <option value="175">Politicians and persons with political influence</option>
-                                                            </select>
-                                                    </div>
+                        
                         <!--end::Col-->
                         <!--begin::Col-->
                         <div class="col-md-3 mb-9">
@@ -2947,53 +2633,14 @@
                                                     </div>
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="required">NHB Asset Level</label>
-                            <div class="fw-bolder fs-6">
-                                <select id="rate-type" class="form-select" wire:model.defer="nhb_asset_level">
-                                    <option value="">Select</option>
-                                    <option value="Rural">Rural</option>
-                                    <option value="Urban">Urban</option>
-                                </select>
-                            </div>
-                                                    </div>
-                        <!--end::Col-->
+                        
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="required    ">Micro Markets</label>
-
-                            <select class="form-select form-select-sm" wire:change="changeMicroMarket" wire:model.defer="micro_markets">
-                                <option value="">Select</option>
-                                                                    <option value="220">Runkata</option>
-                                                                    <option value="237">Fatehpur Sikri</option>
-                                                                    <option value="374">Albatiya</option>
-                                                                    <option value="420">Tajganj</option>
-                                                                    <option value="421">Kalindi Vihar</option>
-                                                                    <option value="431">Dayalbagh</option>
-                                                                    <option value="459">Ram Bagh</option>
-                                                                    <option value="543">Etmadpur</option>
-                                                                    <option value="653">Tedi Baghiya</option>
-                                                                    <option value="754">Tundla</option>
-                                                                    <option value="856">Kirawali Road</option>
-                                                                    <option value="904">Sikandra</option>
-                                                                <option value="0">Other</option>
-                            </select>
-                                                    </div>
                         <!--end::Col-->
                                                     <!--begin::Col-->
-                            <div class="col-md-3 mb-9">
-                                <label class="   ">Micro Markets Other</label>
-
-                                <input type="text" class="form-control" placeholder="" wire:model.defer="micro_markets_other">
-                                                            </div>
+                         
                             <!--end::Col-->
                                                 <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class=" ">Interest as Per Flat Rate</label>
-                            <div class="fw-bolder fs-6">
-                                <input type="required text" class=" form-control" placeholder="" readonly="" wire:model.defer="interest_as_per_flat_rate">
-                            </div>
-                        </div>
+                       
                         <!--end::Col-->
                         <!--begin::Col-->
                         <div class="col-md-3 mb-9">
@@ -3038,13 +2685,7 @@
                         </div>
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class=" ">End Use of funds</label>
-                            <div class="fw-bolder fs-6">
-                                <input type="required text" class="form-control" placeholder="" readonly="" wire:model.defer="end_Use_of_funds">
-                            </div>
-
-                        </div>
+                       
                         <!--end::Col-->
                         <!--begin::Col-->
                         <div class="col-md-3 mb-9">
@@ -3057,80 +2698,30 @@
                                                     </div>
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="required">CERSAI Match Found</label>
-                            <select class="form-select form-select-sm" wire:model.defer="cersai_match_found">
-                                <option value="" selected="">Select</option>
-                                <option value="yes" selected="">Yes</option>
-                                <option value="no" selected="">No</option>
-                            </select>
-                                                    </div>
+                        
+                        <!--begin::Col-->
+                        
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="">CERSAI Descriptions</label>
-                            <input type="text" class="form-control" placeholder="" wire:model.defer="cersai_descriptions">
-                                                    </div>
+                        
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="required">Salary Slips Available</label>
-                            <select class="form-select form-select-sm" wire:model.lezy="salary_slips_available">
-                                <option value="" selected="">Select</option>
-                                <option value="yes" selected="">Yes</option>
-                                <option value="no" selected="">No</option>
-                            </select>
-                                                    </div>
+                     
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="">Total Months Salary Slips</label>
-                            <input type="number" class="form-control" placeholder="0" wire:model.defer="total_months_salary_slips">
-                                                    </div>
+                        
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="required">ITR Submitted</label>
-                            <select class="form-select form-select-sm" wire:model.lazy="itr_submitted">
-                                <option value="" selected="">Select</option>
-                                <option value="yes" selected="">Yes</option>
-                                <option value="no" selected="">No</option>
-                            </select>
-                                                    </div>
+                   
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="">Gap between 2 ITR</label>
-                            <input type="number" class="form-control" placeholder="0" wire:model.defer="gap_between_itr">
-                                                    </div>
+                       
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="required">Counter Party</label>
-                            <select class="form-select form-select-sm" wire:model.lazy="counter_party">
-                                <option value="">Select</option>
-                                <option value="01">1</option>
-                                <option value="02">2</option>
-                                <option value="03">3</option>
-                            </select>
-                                                    </div>
+                        
                         <!--end::Col-->
                         <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="required">Mortgage Guarantee</label>
-                            <select class="form-select form-select-sm" wire:model.lazy="mortgage_guarantee">
-                                <option value="">Select</option>
-                                <option value="01">CRGFTLIH</option>
-                                <option value="02">Others</option>
-                                <option value="03" selected="">None</option>
-                            </select>
-                                                    </div>
-                        <!--end::Col-->
-                        <!--begin::Col-->
-                        <div class="col-md-3 mb-9">
-                            <label class="">Amount Guaranteed (Rs.)</label>
-                            <input type="number" class="form-control" placeholder="0" wire:model.defer="amount_guaranteed" readonly="">
-                                                    </div>
+                
                         <!--end::Col-->
                         <!--begin::Col-->
                         <div class="col-md-3 mb-9">
